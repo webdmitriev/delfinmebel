@@ -21,4 +21,18 @@
   .block-05 .slider-products .slider-product:hover {
     background-color: rgba(#5765ae, 0.2);
   }
+
+  .block-08 .our-works:hover {
+    background-color: rgba(#5765ae, 0.7);
+  }
+
+  .block-09 .faq-accordion .panel .panel-heading:hover .heading-button {
+    background-color: rgba(#bdbdbd, 0.6);
+    &:before {
+      width: 60%;
+    }
+    &:after {
+      height: 60%;
+    }
+  }
 }

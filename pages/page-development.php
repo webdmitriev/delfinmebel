@@ -375,5 +375,95 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-09">
+    <div class="container">
+      <div class="block-title">
+        <h2 class="h2">Часто задаваемые вопросы</h2>
+        <p class="sub_title">Остались вопросы? Посмотрите ответы</p>
+      </div>
+      <div class="block-faq-block">
+        <p class="descr descr-title">Как выбрать ростовую группу для школьной мебели, чтобы избежать проблем с Роспотребнадзором?</p>
+        <p class="descr descr-popup"><span>Посмотреть таблицу ростовых групп</span></p>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="panel">
+          <div class="panel-heading ">Как выбрать правильную высоту парты для ученика? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Высота парты должна соответствовать росту ребенка и СанПиНам. Мы предлагаем регулируемые модели, которые подходят детям разных возрастов. Позвоните нам и мы вас проконсультируем по подбору правильных ростовых групп, чтобы не было проблем с РосПотребНадзором.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Какая мебель лучше всего подходит для библиотеки? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Для библиотек рекомендуем использовать прочные стеллажи с антикоррозийным покрытием и удобные читальные столы с мягкими стульями.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Можно ли заказать мебель нестандартных размеров? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Мы принимаем заказы на изготовление мебели по индивидуальным размерам. Свяжитесь с нашими менеджерами для обсуждения деталей. Выезд и консультация бесплатно.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Какие документы нужны для покупки мебели юридическим лицом? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Для оформления заказа потребуются реквизиты вашей организации, договор поставки и счет на оплату мы сделаем сами. При необходимости окажем содействие в получении коммерческих предложений от разных организаций.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Есть ли скидки для школ и образовательных учреждений на покупку мебели? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Да, мы предоставляем специальные условия для государственных и частных образовательных организаций. А также у нас есть много акций. Уточните детали у нашего менеджера.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Можно ли получить образцы материалов перед покупкой? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Конечно! Мы можем предоставить образцы материалов для ознакомления.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Какой опыт работы у вашей компании? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Компания Дельфин работает на рынке производства мебели для учебных заведений более 5 лет. Мы имеем большой опыт и успешно реализовали множество проектов различной сложности.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Какие гарантии вы предоставляете на свою продукцию? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">На всю нашу мебель предоставляется гарантия сроком 12 месяцев. В случае возникновения каких-либо проблем, мы осуществляем гарантийный ремонт или замену продукции. И даже по истечении гарантийных обязательств, мы поможем вам, так как стараемся выстраивать долгосрочные отношения с нашими партнерами.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Из каких материалов изготавливается ваша мебель? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Мы используем только высококачественные и экологически чистые материалы, такие как ЛДСП, массив дерева, металл и пластик. Все материалы имеют необходимые сертификаты соответствия.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Какие требования предъявляются к мебели для учебных заведений? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Мебель для учебных заведений должна соответствовать определенным стандартам безопасности и эргономики. Наша компания строго следит за соблюдением всех требований ГОСТов и СанПиНов.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Какие способы оплаты мебели вы принимаете? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Мы принимаем оплату наличными, банковскими картами и безналичным расчетом.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading ">Где можно посмотреть образцы вашей мебели? <div class="heading-button"></div></div>
+          <div class="panel-collapse">
+            <div class="panel-body">Вы можете посетить наш офис или запросить выезд менеджера с образцами материалов.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 <?php
 get_footer();

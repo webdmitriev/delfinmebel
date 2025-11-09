@@ -27,4 +27,19 @@ document.addEventListener('DOMContentLoaded', function () {
   //   parentSelector: '.gallery-container',   // Конкретный родитель (опционально)
   //   popupClass: 'my-custom-popup'          // Кастомный класс popup
   // });
+
+  // ***
+  // faq
+  $(".panel-heading").click(function (e) {
+    $(this)
+      .toggleClass("in")
+      .next()
+      .slideToggle();
+    $(".panel-heading")
+      .not(this)
+      .removeClass("in")
+      .next()
+      .slideUp();
+    e.preventDefault();
+  });
 })
