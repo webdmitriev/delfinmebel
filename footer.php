@@ -12,7 +12,7 @@
 $url = get_template_directory_uri();
 
 ?>
-<div style="display: block; width: 100%; height: 400px; background-color: rgba(0,0,0,0.6);"></div>
+		<div style="display: block; width: 100%; height: 400px; background-color: rgba(0,0,0,0.6);"></div>
 
 		<footer class="footer" style="display: none;">
 			<div class="container">
@@ -64,6 +64,7 @@ $url = get_template_directory_uri();
 				</div>
 			</div>
 		</footer>
+
 	</div><!-- #app -->
 
 <?php wp_footer(); ?>

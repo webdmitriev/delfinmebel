@@ -7,6 +7,14 @@
     background-color: rgba(#5765ae, 0.8);
   }
 
+  // **********
+  // components
+  .btn.btn-standard:hover {
+    color: var(--white-color);
+    background-color: rgba(#5765ae, 0.4);
+    border-color: transparent;
+  }
+
   // ******
   // blocks
   .block-04 .block-category:hover,

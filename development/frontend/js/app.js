@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     $(this).toggleClass("active")
   })
 
-  // ******
-  // header
+  // **********
+  // AutoSlider
   new AutoSlider('.slider-products', {
     loop: true,
     autoScrollDelay: 3000, // 3 секунды
@@ -16,4 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
     gap: 16,               // отступ между слайдами
     pauseOnHover: true     // не останавливать при наведении
   });
+
+  // ************
+  // GalleryPopup
+  new GalleryPopup();
+
+  // const customGallery = new GalleryPopup({
+  //   triggerSelector: '.my-gallery-trigger', // Кастомный класс триггера
+  //   imageSelector: '.gallery-img',          // Кастомный селектор картинок
+  //   parentSelector: '.gallery-container',   // Конкретный родитель (опционально)
+  //   popupClass: 'my-custom-popup'          // Кастомный класс popup
+  // });
 })

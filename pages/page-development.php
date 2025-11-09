@@ -318,72 +318,54 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
       <div class="block-pictures df-fs-st">
         <div class="block-picture">
           <div class="block-picture__gallery">
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-02.jpeg" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-03.jpeg" alt="alto" class="slide show-popup-gallery" />
           </div>
           <p class="block-picture__title">Экспозиционные витрины для музея</p>
           <p class="block-picture__descr">Техникум-интернат г.Советск</p>
         </div>
         <div class="block-picture">
           <div class="block-picture__gallery">
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
           </div>
           <p class="block-picture__title">title</p>
           <p class="block-picture__descr">descr</p>
         </div>
         <div class="block-picture">
           <div class="block-picture__gallery">
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
           </div>
           <p class="block-picture__title">title</p>
           <p class="block-picture__descr">descr</p>
         </div>
         <div class="block-picture">
           <div class="block-picture__gallery">
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
           </div>
           <p class="block-picture__title">Экспозиционные витрины для музея</p>
           <p class="block-picture__descr">Техникум-интернат г.Советск</p>
         </div>
         <div class="block-picture">
           <div class="block-picture__gallery">
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
           </div>
           <p class="block-picture__title">title</p>
           <p class="block-picture__descr">descr</p>
         </div>
         <div class="block-picture">
           <div class="block-picture__gallery">
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
-            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide show-popup-gallery" />
           </div>
           <p class="block-picture__title">title</p>
           <p class="block-picture__descr">descr</p>
