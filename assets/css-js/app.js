@@ -88,6 +88,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // header
   $(".header").on("click", ".burger", function () {
     $(this).toggleClass("active")
+    $(".header-mobile").toggleClass("active")
+  })
+  $(".header-mobile").on("click", ".close-menu", function () {
+    $(".header .burger").removeClass("active")
+    $(".header-mobile").removeClass("active")
   })
 
   // **********
