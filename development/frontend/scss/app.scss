@@ -16,7 +16,7 @@
 @use "./components/h2";
 @use "./components/sub_title";
 @use "./components/descr";
-@use "./components/divider";
+@use "./components/btn";
 // @use "components/sect-title";
 // @use "components/btn";
 // @use "components/link";
@@ -24,6 +24,7 @@
 
 // blocks
 @use "./blocks/block-01";
+@use "./blocks/block-02";
 
 // animations
 @use "./data/animations";

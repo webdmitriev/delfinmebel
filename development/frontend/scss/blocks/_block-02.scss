@@ -1,0 +1,10 @@
+.block-02 {
+  position: relative;
+  width: 100%;
+  padding-block: 30px 40px;
+  z-index: 40;
+  .container {
+    max-width: 1280px;
+    gap: 16px;
+  }
+}
