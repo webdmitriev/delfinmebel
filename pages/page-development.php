@@ -106,5 +106,83 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-04">
+    <div class="container">
+      <a href="#" class="block-category">
+        <p class="block-category__name">Парты и стулья</p>
+        <p class="block-category__descr">рабочие столы, коворкинг</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-01.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Столы</p>
+        <p class="block-category__descr">для учителя, руководителя, персонала</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-02.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Системы хранения</p>
+        <p class="block-category__descr">шкафы, стеллажи</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-03.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Демонстрационные столы, вытяжные шкафы</p>
+        <p class="block-category__descr">лаборантская, химия, физика</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Мебель для учебного процесса</p>
+        <p class="block-category__descr">плакатницы, тумбы, тележки и прочее</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-05.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Мягкая мебель</p>
+        <p class="block-category__descr">диваны, банкетки, лавки для фойе</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-06.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Мебель для библиотеки</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-07.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Мебель для музеев</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-08.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Мебель для столовой</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-09.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Гардеробные системы</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-10.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Мебель лофт</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-11.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Кресла и стулья</p>
+        <p class="block-category__descr">компьютерные, офисные, для учителя</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-12.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Кресла и стулья</p>
+        <p class="block-category__descr">компьютерные, офисные, для учителя</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-13.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Многоместные секции</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-14.png" alt="alto" class="block-category__image" />
+      </a>
+      <a href="#" class="block-category">
+        <p class="block-category__name">Оборудование для образовательного процесса</p>
+        <img src="<?= $url; ?>/assets/img/block-04/image-15.png" alt="alto" class="block-category__image" />
+    </a>
+  </div>
+
+  <div class="block-05">
+    <div class="container">
+      www
+    </div>
+  </div>
+
 <?php
 get_footer();

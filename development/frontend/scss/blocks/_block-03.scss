@@ -3,9 +3,9 @@
   width: 100%;
   z-index: 40;
   .container {
-    max-width: calc(100% - 20px);
+    max-width: calc(var(--container) - 20px);
     padding-block: 16px;
-    background-color: #f5f2f2;
+    background-color: var(--bg-block);
     border-radius: 10px;
   }
   .h2 {
