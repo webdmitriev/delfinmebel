@@ -272,7 +272,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     <div class="container">
       <h2 class="h2">Видеообзоры наших проектов</h2>
       <div class="block-video">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="block-descr">Оснастили учебной мебелью 2 кабинета в школе №1 г.Немана в рамках проекта "РосАтомКлас"</p>
       </div>
     </div>
@@ -281,31 +281,31 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
   <div class="block-07">
     <div class="slider-videos">
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
       <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
         <p class="slide-descr">Калининградский бизнес-колледж</p>
       </div>
     </div>
@@ -384,7 +384,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
       <div class="block-faq-block">
         <p class="descr descr-title">Как выбрать ростовую группу для школьной мебели, чтобы избежать проблем с Роспотребнадзором?</p>
         <p class="descr descr-popup"><span>Посмотреть таблицу ростовых групп</span></p>
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
       </div>
 
       <div class="faq-accordion">
