@@ -1,0 +1,41 @@
+.h1 {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: var(--font-height);
+  color: var(--black-color);
+}
+
+@media (max-width: 1199px) {
+  .h1 {
+    font-size: 52px;
+  }
+}
+@media (max-width: 991px) {
+  .h1 {
+    font-size: 46px;
+  }
+}
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 34px;
+  }
+}
+@media (max-width: 576px) {
+  .h1 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 460px) {
+  .h1 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 400px) {
+  .h1 {
+    font-size: 21px;
+  }
+}
