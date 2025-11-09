@@ -1,4 +1,4 @@
-# Wordpress with Gutenberg
+# Delfin Mebel
 
 ---
 
@@ -7,7 +7,6 @@
 - Auto sitemap.xml
 - Typograph for blocks
 - Auto Linking
-- Changing color (:root {})
 
 ---
 
