@@ -1,7 +1,7 @@
 .block-04 {
   position: relative;
   width: 100%;
-  padding-top: 16px;
+  padding-block: 16px 40px;
   .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));

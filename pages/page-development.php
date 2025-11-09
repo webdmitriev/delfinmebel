@@ -268,5 +268,15 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-06">
+    <div class="container">
+      <h2 class="h2">Видеообзоры наших проектов</h2>
+      <div class="block-video">
+        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+        <p class="block-descr">Оснастили учебной мебелью 2 кабинета в школе №1 г.Немана в рамках проекта "РосАтомКлас"</p>
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
