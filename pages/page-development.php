@@ -311,5 +311,87 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-08">
+    <div class="container">
+      <h2 class="h2">Выполненные работы</h2>
+      <p class="sub_title">Мы гордимся нашими работами</p>
+      <div class="block-pictures df-fs-st">
+        <div class="block-picture">
+          <div class="block-picture__gallery">
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+          </div>
+          <p class="block-picture__title">Экспозиционные витрины для музея</p>
+          <p class="block-picture__descr">Техникум-интернат г.Советск</p>
+        </div>
+        <div class="block-picture">
+          <div class="block-picture__gallery">
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+          </div>
+          <p class="block-picture__title">title</p>
+          <p class="block-picture__descr">descr</p>
+        </div>
+        <div class="block-picture">
+          <div class="block-picture__gallery">
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+          </div>
+          <p class="block-picture__title">title</p>
+          <p class="block-picture__descr">descr</p>
+        </div>
+        <div class="block-picture">
+          <div class="block-picture__gallery">
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+          </div>
+          <p class="block-picture__title">Экспозиционные витрины для музея</p>
+          <p class="block-picture__descr">Техникум-интернат г.Советск</p>
+        </div>
+        <div class="block-picture">
+          <div class="block-picture__gallery">
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+          </div>
+          <p class="block-picture__title">title</p>
+          <p class="block-picture__descr">descr</p>
+        </div>
+        <div class="block-picture">
+          <div class="block-picture__gallery">
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+            <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="slide" />
+          </div>
+          <p class="block-picture__title">title</p>
+          <p class="block-picture__descr">descr</p>
+        </div>
+      </div>
+      <a href="#" class="our-works" data-count="563">Смотреть все работы</a>
+    </div>
+  </div>
+
 <?php
 get_footer();

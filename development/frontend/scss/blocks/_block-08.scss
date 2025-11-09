@@ -1,0 +1,177 @@
+.block-08 {
+  position: relative;
+  padding-block: 60px;
+  z-index: 40;
+  .h2 {
+    margin-bottom: 8px;
+  }
+  .sub_title {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--accent-color);
+  }
+  .block-pictures {
+    gap: 60px 24px;
+  }
+  .block-picture {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: calc(50% - 12px);
+    margin-bottom: 60px;
+    .block-picture__gallery {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      scroll-behavior: smooth;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      .slide {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        flex: 0 0 100%;
+        display: block;
+        height: 480px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    .block-picture__gallery::-webkit-scrollbar {
+      display: none;
+    }
+    .block-picture__gallery::scroll-button(right),
+    .block-picture__gallery::scroll-button(left) {
+      content: "";
+      position: absolute;
+      top: 498px;
+      display: block;
+      width: 44px;
+      height: 44px;
+      background: transparent url(../img/icons/icon-arrow-slide.svg) center / contain no-repeat;
+      border: none;
+      cursor: pointer;
+    }
+    .block-picture__gallery::scroll-button(left) {
+      right: 60px;
+    }
+    .block-picture__gallery::scroll-button(right) {
+      right: 0px;
+      transform: rotate(180deg);
+    }
+    .block-picture__gallery::scroll-button(right):disabled,
+    .block-picture__gallery::scroll-button(left):disabled {
+      opacity: 0.5;
+      cursor: auto;
+    }
+    .block-picture__title {
+      display: block;
+      width: 100%;
+      margin-bottom: 12px;
+      padding-right: 120px;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--black-color);
+    }
+    .block-picture__descr {
+      display: block;
+      width: 100%;
+      padding-right: 120px;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.4;
+      color: var(--gray-color);
+    }
+  }
+  .our-works {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 32px 40px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 22px;
+    text-align: center;
+    color: var(--white-color);
+    background-color: var(--accent-color);
+    border-radius: 16px;
+    &:after {
+      content: attr(data-count);
+      position: absolute;
+      top: calc(50% - 18px);
+      left: calc(50% + 160px);
+      display: block;
+      width: 36px;
+      height: 36px;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 36px;
+      text-align: center;
+      color: var(--white-color);
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      border-radius: 100px;
+    }
+  }
+}
+
+@media (max-width: 1680px) {
+}
+@media (max-width: 1366px) {
+}
+@media (max-width: 1199px) {
+  .block-08 .block-picture .block-picture__gallery .slide {
+    height: 360px;
+  }
+  .block-08 .block-picture .block-picture__gallery::scroll-button(right),
+  .block-08 .block-picture .block-picture__gallery::scroll-button(left) {
+    top: 380px;
+  }
+}
+@media (max-width: 991px) {
+  .block-08 .block-picture {
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+}
+@media (max-width: 460px) {
+  .block-08 .sub_title {
+    margin-bottom: 24px;
+  }
+  .block-08 .block-picture .block-picture__gallery .slide {
+    height: 280px;
+  }
+  .block-08 .block-picture .block-picture__gallery::scroll-button(right),
+  .block-08 .block-picture .block-picture__gallery::scroll-button(left) {
+    top: 300px;
+    width: 36px;
+    height: 36px;
+  }
+  .block-08 .block-picture .block-picture__gallery::scroll-button(left) {
+    right: 48px;
+  }
+  .block-08 .block-picture .block-picture__title {
+    padding-right: 90px;
+    font-size: 20px;
+  }
+  .block-08 .block-picture .block-picture__descr {
+    padding-right: 90px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 400px) {
+  .block-08 .our-works:after {
+    left: calc(50% + 140px);
+  }
+}
