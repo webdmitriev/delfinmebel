@@ -175,12 +175,96 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
       <a href="#" class="block-category">
         <p class="block-category__name">Оборудование для образовательного процесса</p>
         <img src="<?= $url; ?>/assets/img/block-04/image-15.png" alt="alto" class="block-category__image" />
-    </a>
+      </a>
+    </div>
   </div>
 
   <div class="block-05">
     <div class="container">
-      www
+      <h2 class="h2">Популярные товары</h2>
+      <div class="slider-products">
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+        <a href="#" class="slider-product slide">
+          <img src="<?= $url; ?>/assets/img/block-04/image-04.png" alt="alto" class="slider-product__image" />
+          <p class="slider-product__title">title</p>
+          <p class="slider-product__descr">descr</p>
+          <div class="slider-product__price df-fs-fe w-100p">
+            <span class="price-new">13 600</span>
+            <span class="price-old">17 000</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 

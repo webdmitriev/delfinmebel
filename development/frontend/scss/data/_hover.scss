@@ -7,6 +7,10 @@
     background-color: rgba(#5765ae, 0.8);
   }
 
-  // **********
-  // components
+  // ******
+  // blocks
+  .block-04 .block-category:hover,
+  .block-05 .slider-products .slider-product:hover {
+    background-color: rgba(#5765ae, 0.2);
+  }
 }

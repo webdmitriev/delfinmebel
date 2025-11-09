@@ -7,5 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     $(this).toggleClass("active")
   })
 
-  console.log('Oleg!');
+  // ******
+  // header
+  new AutoSlider('.slider-products', {
+    loop: true,
+    autoScrollDelay: 3000, // 3 секунды
+    slideWidth: 310,       // ширина слайда
+    gap: 16,               // отступ между слайдами
+    pauseOnHover: true     // не останавливать при наведении
+  });
 })
