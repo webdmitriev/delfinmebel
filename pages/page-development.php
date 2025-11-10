@@ -584,5 +584,39 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-15">
+    <div class="container df-sp-st">
+      <h2 class="h2">Контакты</h2>
+      <div class="block-item df-sp-ce w-100p">
+        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-01.svg" alt="alto" /></div>
+        <div class="block-item__content">
+          <div class="block-item__label">label</div>
+          <div class="block-item__descr">descr</div>
+        </div>
+      </div>
+      <div class="block-item df-sp-ce w-100p">
+        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-02.svg" alt="alto" /></div>
+        <div class="block-item__content">
+          <div class="block-item__label">label</div>
+          <div class="block-item__descr">descr</div>
+        </div>
+      </div>
+      <div class="block-item df-sp-ce w-100p">
+        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-03.svg" alt="alto" /></div>
+        <div class="block-item__content">
+          <div class="block-item__label">label</div>
+          <div class="block-item__descr">descr</div>
+        </div>
+      </div>
+      <div class="block-item df-sp-ce w-100p">
+        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-04.svg" alt="alto" /></div>
+        <div class="block-item__content">
+          <div class="block-item__label">label</div>
+          <div class="block-item__descr">descr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
