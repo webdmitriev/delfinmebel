@@ -127,6 +127,50 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-18">
+    <div class="container">
+      <h2 class="h2">Вы можете выбрать ЛДСП любого цвета и фактуры</h2>
+      <div class="descr">Реальные цвета ЛДСП могут несколько отличаться от представленных в нашем каталоге из-за особенностей цветопередачи монитора, <br/>поэтому окончательный выбор лучше делать, увидев образцы «вживую». По индивидуальному запросу мы отправим вам интересующие вас фото материалов.</div>
+      <div class="products-color df-fs-fs w-100p">
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-01.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-02.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-03.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-01.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-02.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-03.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-01.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="block-14">
     <div class="container">
       <img src="<?= $url; ?>/assets/img/block-14/bg-image-01.webp" alt="alto" class="block-bg-01" />

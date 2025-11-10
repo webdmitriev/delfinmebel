@@ -22,6 +22,7 @@
 @use "./components/descr";
 @use "./components/btn";
 @use "./components/product";
+@use "./components/product-color";
 // @use "components/sect-title";
 // @use "components/btn";
 // @use "components/link";
@@ -45,6 +46,7 @@
 @use "./blocks/block-15";
 @use "./blocks/block-16";
 @use "./blocks/block-17";
+@use "./blocks/block-18";
 
 // animations
 @use "./data/animations";
