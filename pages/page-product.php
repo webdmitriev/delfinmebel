@@ -167,7 +167,23 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
           <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
           <div class="product-color__articulate">Артикул 52567</div>
         </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-02.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-03.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
+        <div class="product-color">
+          <img src="<?= $url; ?>/assets/img/product-color/product-color-01.png" alt="alto" class="product-color__image" />
+          <div class="product-color__label">ЛДСП Кармин U17005 MP Woodeco1/30</div>
+          <div class="product-color__articulate">Артикул 52567</div>
+        </div>
       </div>
+      <a href="#" class="block-link">Все варианты</a>
     </div>
   </div>
 
