@@ -241,9 +241,6 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
-  Catalog
-
-
   <div class="block-14">
     <div class="container">
       <img src="<?= $url; ?>/assets/img/block-14/bg-image-01.webp" alt="alto" class="block-bg-01" />
