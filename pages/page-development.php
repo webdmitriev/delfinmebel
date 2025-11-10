@@ -520,5 +520,57 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-13">
+    <div class="block-lines">
+      <div class="block-line block-line-01"></div>
+      <div class="block-line block-line-02"></div>
+      <div class="block-line block-line-03"></div>
+      <div class="block-line block-line-04"></div>
+      <div class="block-line block-line-05"></div>
+      <div class="block-line block-line-06"></div>
+      <div class="block-line block-line-07"></div>
+      <div class="block-line block-line-08"></div>
+      <div class="block-line block-line-09"></div>
+      <div class="block-line block-line-10"></div>
+      <div class="block-line block-line-11"></div>
+      <div class="block-line block-line-12"></div>
+      <div class="block-line block-line-13"></div>
+      <div class="block-line block-line-14"></div>
+      <div class="block-line block-line-15"></div>
+      <div class="block-line block-line-16"></div>
+      <div class="block-line block-line-17"></div>
+      <div class="block-line block-line-18"></div>
+      <div class="block-line block-line-19"></div>
+      <div class="block-line block-line-20"></div>
+      <div class="block-line block-line-21"></div>
+      <div class="block-line block-line-22"></div>
+      <div class="block-line block-line-23"></div>
+      <div class="block-line block-line-24"></div>
+    </div>
+    <div class="container df-sp-fe">
+      <div class="block-content">
+        <h2 class="h2">Помогаем с подготовкой <br/>конкурсной документации</h2>
+        <div class="block-item df-fs-fs w-100p">
+          <img src="<?= $url; ?>/assets/img/block-13/icon-block-01.svg" alt="alto" class="block-item__icon" />
+          <div class="descr">Разработка точного технического задания</div>
+        </div>
+        <div class="block-item df-fs-fs w-100p">
+          <img src="<?= $url; ?>/assets/img/block-13/icon-block-02.svg" alt="alto" class="block-item__icon" />
+          <div class="descr">Содействие в получении коммерческих предложений от разных фирм</div>
+        </div>
+      </div>
+      <div class="block-policy df-sp-fs w-100p">
+        <div class="block-item">
+          <img src="<?= $url; ?>/assets/img/block-13/icon-block-03.webp" alt="alto" class="block-item__icon" />
+          <div class="descr">Федеральный закон "О закупках товаров, работ, услуг отдельными видами юридических лиц" от 18.07.2011 N 223-ФЗ</div>
+        </div>
+        <div class="block-item">
+          <img src="<?= $url; ?>/assets/img/block-13/icon-block-03.webp" alt="alto" class="block-item__icon" />
+          <div class="descr">Федеральный закон "О контрактной системе в сфере закупок товаров, работ, услуг для обеспечения государственных и муниципальных нужд" от 05.04.2013 N 44-ФЗ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
