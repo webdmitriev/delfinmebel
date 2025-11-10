@@ -9,7 +9,7 @@
  * @package webdmitriev
  */
 
-$url = get_template_directory_uri();
+	$url = get_template_directory_uri();
 
 ?>
 
@@ -21,8 +21,8 @@ $url = get_template_directory_uri();
 				</div>
 				<div class="footer-content df-sp-st w-100p">
 					<div class="footer-block">
-						<div class="descr">Новые парты и стулья от российского производителя по приемлемым ценам</div>
-						<div class="descr">ООО"ДЕЛЬФИН" <br/>ИНН 3906383326 <br/>ОГРН 1193926012268</div>
+						<div class="descr"><?php echo esc_html(get_footer_description()); ?></div>
+						<div class="descr"><?php echo get_inn_html(); ?></div>
 					</div>
 
 					<div class="footer-navigation">
@@ -75,7 +75,7 @@ $url = get_template_directory_uri();
 				</div>
 
 				<div class="footer-bottom df-sp-ce w-100p">
-					<div class="descr">© <?php echo date('Y'); ?> Delfinmebel39 | All Right reserved</div>
+					<div class="descr">© <?php echo date('Y'); ?> Delfinmebel39</div>
 
 					<?php if (function_exists('display_theme_social')) : ?>
 						<?php display_theme_social(); ?>

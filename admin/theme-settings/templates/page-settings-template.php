@@ -33,8 +33,37 @@ if (!defined('ABSPATH')) exit;
         <?php endforeach; ?>
       <?php endif; ?>
     </div>
-
     <p><button type="button" class="button add-social">+ Добавить соцсеть</button></p>
+
+    <hr />
+
+    <h2>Дополнительные данные</h2>
+    <table class="form-table">
+      <tr>
+        <th scope="row"><label for="footer_description">Краткое описание (для футера)</label></th>
+        <td>
+          <textarea
+            name="theme_settings[footer_description]"
+            id="footer_description"
+            rows="3"
+            style="width:100%; max-width:600px;"
+          ><?php echo esc_textarea(get_option('theme_settings')['footer_description'] ?? ''); ?></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><label for="inn_number">ИНН / Реквизиты</label></th>
+        <td>
+          <textarea
+            name="theme_settings[inn_number]"
+            id="inn_number"
+            rows="3"
+            style="width:100%; max-width:600px;"
+            placeholder="ООО «Компания»<br>ИНН 1234567890<br>ОГРН 1234567890123"
+          ><?php echo esc_textarea(get_option('theme_settings')['inn_number'] ?? ''); ?></textarea>
+          <p class="description">Можно использовать теги &lt;br&gt; для переноса строк.</p>
+        </td>
+      </tr>
+    </table>
 
     <?php submit_button(); ?>
   </form>

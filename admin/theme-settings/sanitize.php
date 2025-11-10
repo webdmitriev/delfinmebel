@@ -24,6 +24,18 @@ function theme_settings_sanitize($input) {
     }
   }
 
+  // Санитизация текстовых полей (footer_description и inn_number)
+  if (isset($input['footer_description'])) {
+    $sanitized_input['footer_description'] = sanitize_textarea_field($input['footer_description']);
+  }
+
+  if (isset($input['inn_number'])) {
+    $allowed_tags = [
+      'br' => []
+    ];
+    $sanitized_input['inn_number'] = wp_kses($input['inn_number'], $allowed_tags);
+  }
+
   // Санитизация Яндекс.Метрики
   if (isset($input['yandex_metric'])) {
     $sanitized_input['yandex_metric'] = wp_kses($input['yandex_metric'], [
