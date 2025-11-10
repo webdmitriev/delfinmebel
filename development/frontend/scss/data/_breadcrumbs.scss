@@ -1,0 +1,22 @@
+.breadcrumbs {
+  display: block;
+  padding-block: 100px 40px;
+  .container {
+    gap: 8px 12px;
+  }
+  a {
+    display: block;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.3s ease;
+    &:hover {
+      color: var(--accent-color);
+    }
+    span {
+      font-weight: 600;
+      color: #333;
+    }
+  }
+}
