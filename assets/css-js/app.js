@@ -11,6 +11,9 @@ jQuery(document).ready(function ($) {
   if (document.querySelector('.block-01')) {
     changeColorAnimated("от производителя", ".block-01 .h1", "#5765ae");
   }
+  if (document.querySelector('.block-10')) {
+    changeColorAnimated("ozon", ".block-10 .block-ozon__name", "#345cfa");
+  }
 
   function changeColorAnimated(text, className, color) {
     const elements = document.querySelectorAll(className);

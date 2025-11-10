@@ -471,5 +471,20 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-10">
+    <div class="container">
+      <h2 class="h2">Акции</h2>
+      <div class="block-ozon">
+        <img src="<?= $url; ?>/assets/img/block-10/image-01.png" alt="alto" class="block-ozon__image" />
+        <div class="block-ozon__suptitle">Специальное предложение для наших клиентов</div>
+        <div class="block-ozon__wrap">
+          <div class="block-ozon__title">Привезем вам любой товар с без наценки</div>
+          <div class="block-ozon__name">ozon</div>
+        </div>
+        <div class="descr">Мы стали официальным партнером маркетплейса ОЗОН и можем очень выгодно доставлять вам товары. <br/><br/>Вы просто выбираете нужные вам позиции, сбрасываете нам ссылки на них, а мы вам потом присылаем QR-код на получение в ближайшем от вашей школы пункте выдачи. <br/>Вместе с тем мы готовим полный пакет документов для вашей бухгалтерии.</div>
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
