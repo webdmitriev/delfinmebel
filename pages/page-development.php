@@ -572,5 +572,17 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-14">
+    <div class="container">
+      <img src="<?= $url; ?>/assets/img/block-14/bg-image-01.webp" alt="alto" class="block-bg-01" />
+      <img src="<?= $url; ?>/assets/img/block-14/bg-image-02.svg" alt="alto" class="block-bg-02" />
+      <div class="block-wrap">
+        <h2 class="h2">Подписывайтесь на наше сообщество ВКонтакте и узнавайте все новости первыми</h2>
+        <div class="descr">Здесь мы выкладываем наши работы в образовательных учреждениях Калининграда и области</div>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="link-vk">/school_mebel39</a>
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
