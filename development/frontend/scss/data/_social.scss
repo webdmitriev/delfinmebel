@@ -1,0 +1,14 @@
+.theme-social-links a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  &.social-icon-vk {
+    background: url("../img/icons/icon-social-vk.svg") center / contain no-repeat;
+  }
+  &.social-icon-telegram {
+    background: url("../img/icons/icon-social-tg.svg") center / contain no-repeat;
+  }
+  &.social-icon-whatsapp {
+    background: url("../img/icons/icon-social-wa.svg") center / contain no-repeat;
+  }
+}

@@ -133,6 +133,30 @@ document.addEventListener('DOMContentLoaded', function () {
       .slideUp();
     e.preventDefault();
   });
+
+  // ******
+  // footer
+  const scrollToTopBtn = document.querySelector('a.link-to-top');
+  if (scrollToTopBtn) {
+    // Показываем/скрываем кнопку при скролле
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Плавный скролл при клике
+    scrollToTopBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 })
 
 

@@ -1,34 +1,30 @@
 <?php
-
+// admin/theme-settings/shortcodes.php
 defined('ABSPATH') || exit;
 
-// Шорткоды для вывода данных
-function theme_phone_shortcode() {
-  $phone = get_theme_phone();
-  return $phone ? '<a href="tel:' . esc_attr($phone) . '">' . esc_html($phone) . '</a>' : '';
-}
-add_shortcode('theme_phone', 'theme_phone_shortcode');
+// Шорткод для вывода социальных сетей с иконками
+function theme_social_shortcode($atts) {
+  $atts = shortcode_atts(array(
+    'class' => 'theme-social-links',
+  ), $atts);
 
-function theme_email_shortcode() {
-  $email = get_theme_email();
-  return $email ? '<a href="mailto:' . esc_attr($email) . '">' . esc_html($email) . '</a>' : '';
-}
-add_shortcode('theme_email', 'theme_email_shortcode');
+  $socials = get_theme_social();
+  if (empty($socials)) return '';
 
-function theme_partners_shortcode() {
-  $partners = get_theme_partners();
-  if (empty($partners)) return '';
-
-  $output = '<div class="theme-partners">';
-  foreach ($partners as $partner) {
-    $output .= '<div class="partner-item">';
-    if (!empty($partner['link'])) $output .= '<a href="' . esc_url($partner['link']) . '" target="_blank" rel="noopener">';
-    $output .= esc_html($partner['text']);
-    if (!empty($partner['link'])) $output .= '</a>';
-    $output .= '</div>';
+  $output = '<div class="' . esc_attr($atts['class']) . '">';
+  foreach ($socials as $social) {
+    if (!empty($social['icon']) && !empty($social['link'])) {
+      $icon_class = 'social-icon social-icon-' . esc_attr($social['icon']);
+      $output .= '<a href="' . esc_url($social['link']) . '" class="' . $icon_class . '" target="_blank" rel="noopener noreferrer"></a>';
+    }
   }
   $output .= '</div>';
 
   return $output;
 }
-add_shortcode('theme_partners', 'theme_partners_shortcode');
+add_shortcode('theme_social', 'theme_social_shortcode');
+
+// Дополнительная функция для вывода в шаблоне
+function display_theme_social($class = 'theme-social-links') {
+  echo theme_social_shortcode(array('class' => $class));
+}
