@@ -10,6 +10,12 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 ?>
 
+  <div class="marquee-container">
+    <div class="marquee-content" data-repeat="10" data-speed="80">
+      <div class="marquee-item">Оказываем помощь комитету поддержки семей участников СВО</div>
+    </div>
+  </div>
+
   <main class="block-01">
     <header class="header">
       <div class="container df-sp-ce">
@@ -508,6 +514,12 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
           <div class="block-item__descr">Для постоянных партнеров действует гибкая система скидок</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="marquee-container">
+    <div class="marquee-content" data-repeat="10" data-speed="80">
+      <div class="marquee-item">Оказываем помощь комитету поддержки семей участников СВО</div>
     </div>
   </div>
 
