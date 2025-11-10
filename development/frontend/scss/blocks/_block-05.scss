@@ -125,6 +125,9 @@
 @media (max-width: 768px) {
 }
 @media (max-width: 576px) {
+  .block-05 .h2 {
+    padding-right: 100px;
+  }
   .block-05 .slider-products::scroll-button(right),
   .block-05 .slider-products::scroll-button(left) {
     top: 4px;

@@ -94,4 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // ***********
+  // Product
+  new ImageGallery('.block-thumbnail');
+
+  // Для нескольких галерей на странице
+  // const galleries = document.querySelectorAll('.block-thumbnail');
+  // galleries.forEach(container => {
+  //   new ImageGallery(container);
+  // });
+
 })
