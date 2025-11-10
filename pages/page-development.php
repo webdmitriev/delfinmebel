@@ -268,7 +268,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
-  <div class="block-06">
+  <div class="block-06" style="display: none;">
     <div class="container">
       <h2 class="h2">Видеообзоры наших проектов</h2>
       <div class="block-video">
@@ -279,34 +279,40 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
   </div>
 
   <div class="block-07">
-    <div class="slider-videos">
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
+    <div class="container">
+      <h2 class="h2">Заголовок</h2>
+      <div class="items-video">
+        <div class="item-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
+        <div class="item-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
+        <div class="item-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
+        <div class="item-video hidden-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
+        <div class="item-video hidden-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
+        <div class="item-video hidden-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
+        <div class="item-video hidden-video">
+          <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+          <p class="item-descr">Калининградский бизнес-колледж</p>
+        </div>
       </div>
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
-      </div>
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
-      </div>
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
-      </div>
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
-      </div>
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
-      </div>
-      <div class="slide">
-        <iframe src="https://vk.com/video_ext.php?oid=-219320320&id=456239049" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
-        <p class="slide-descr">Калининградский бизнес-колледж</p>
+      <div class="show-more-container">
+        <button class="show-more-btn" id="showMoreVideos">Показать ещё</button>
       </div>
     </div>
   </div>
