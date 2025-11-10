@@ -486,5 +486,28 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-11">
+    <div class="container">
+      <h2 class="h2">Условия сотрудничества</h2>
+      <div class="block-items df-ce-ce">
+        <div class="block-item block-item-01 df-fs-ce">
+          <img src="<?= $url; ?>/assets/img/block-11/icon-01.svg" alt="alto" class="block-item__icon" />
+          <div class="block-item__label">Доставка и сборка</div>
+          <div class="block-item__descr">Доставка и сборка по Калининграду и области бесплатно!</div>
+        </div>
+        <div class="block-item block-item-02 df-fs-ce">
+          <img src="<?= $url; ?>/assets/img/block-11/icon-02.svg" alt="alto" class="block-item__icon" />
+          <div class="block-item__label">Возможны разные варианты оплаты</div>
+          <div class="block-item__descr">Оплата по факту доставки с предоплатой 0% <br/>Оплата по договору 30% / 70% , 50% / 50% и т.д.</div>
+        </div>
+        <div class="block-item block-item-03 df-fs-ce">
+          <img src="<?= $url; ?>/assets/img/block-11/icon-03.svg" alt="alto" class="block-item__icon" />
+          <div class="block-item__label">Индивидуальный подход</div>
+          <div class="block-item__descr">Для постоянных партнеров действует гибкая система скидок</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
