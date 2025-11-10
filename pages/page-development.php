@@ -509,5 +509,16 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </div>
 
+  <div class="block-12">
+    <div class="container df-fe-ce">
+      <img src="<?= $url; ?>/assets/img/block-12/bg-image-01.png" alt="alto" class="block-bg" />
+      <div class="block-wrap">
+        <h2 class="h2">Наша мебель <br/>сделана по ГОСТу!</h2>
+        <p class="descr">Мебель сертифицирована. <br/>Производство РФ.</p>
+        <img src="<?= $url; ?>/assets/img/block-12/image-01.svg" alt="alto" class="image-block" />
+      </div>
+    </div>
+  </div>
+
 <?php
 get_footer();
