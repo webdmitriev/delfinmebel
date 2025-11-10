@@ -80,7 +80,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </div>
   </main>
 
-  <div class="block-02">
+  <div class="block-02" style="display: none;">
     <div class="container df-ce-ce">
       <a href="#" class="btn btn-standard">Школьная мебель</a>
       <a href="#" class="btn btn-standard">Комплекты классной мебели</a>
@@ -99,6 +99,8 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
       <a href="#" class="btn btn-standard">Кресла и стулья</a>
     </div>
   </div>
+
+  <div style="height:40px;background-color:transparent" aria-hidden="true" class="wp-block-spacer"></div>
 
   <div class="block-03">
     <div class="container">
