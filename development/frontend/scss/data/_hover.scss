@@ -60,4 +60,15 @@
   .block-14 .block-wrap .link-vk:hover {
     background-color: rgba(#5765ae, 0.7);
   }
+
+  // *******
+  // product
+  .product:hover {
+    background-color: rgba(#5765ae, 0.5);
+    .product-title,
+    .product-descr,
+    .product-price .price-new {
+      color: #fff;
+    }
+  }
 }

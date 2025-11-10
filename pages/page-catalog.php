@@ -10,6 +10,237 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 ?>
 
+  <div class="block-16">
+    <div class="container">
+      <div class="block-top">
+        <h1 class="h1">Каталог</h1>
+        <h2 class="h2">Парты и стулья</h2>
+      </div>
+      <div class="block-products">
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+        <div class="product">
+          <div class="product-label">Новинка</div>
+          <a href="#"><img src="<?= $url; ?>/assets/img/product/product-01.png" alt="alto" class="product-thumbnail" /></a>
+          <a href="#" class="product-title line-clamp line-clamp-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, fugit.</a>
+          <div class="product-descr line-clamp line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nostrum doloribus tempore dolores consequatur vero quibusdam soluta placeat commodi voluptatibus, sapiente expedita perspiciatis, beatae esse! Quibusdam voluptates alias nemo rem.</div>
+          <div class="product-price df-fs-ce w-100p">
+            <span class="price-new">1 000</span>
+            <span class="price-old">1 200</span>
+          </div>
+          <a href="#" class="product-link">О товаре</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   Catalog
 
 
