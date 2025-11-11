@@ -15,6 +15,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
       <h1 class="h1">Наши статьи:</h1>
       <div class="blog-items">
         <a href="#" class="blog-item">
+          <div class="blog-item__badge">Пластик или фанера</div>
           <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
           <div class="blog-item__content">
             <div class="blog-item__title">Из какого материала заказывать сиденья и спинки для школьных стульев?</div>
@@ -23,6 +24,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
           </div>
         </a>
         <a href="#" class="blog-item">
+          <div class="blog-item__badge">Избегаем проблем с Роспотребнадзором</div>
           <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
           <div class="blog-item__content">
             <div class="blog-item__title">Из какого материала заказывать сиденья и спинки для школьных стульев?</div>
@@ -39,6 +41,7 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
           </div>
         </a>
         <a href="#" class="blog-item">
+          <div class="blog-item__badge">Разбираемся в ценах</div>
           <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
           <div class="blog-item__content">
             <div class="blog-item__title">Из какого материала заказывать сиденья и спинки для школьных стульев?</div>
