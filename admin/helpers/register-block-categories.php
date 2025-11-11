@@ -30,15 +30,22 @@ function theme_register_block_categories( $categories, $context ) {
 // === Разрешаем только нужные блоки ===
 add_filter( 'allowed_block_types_all', 'theme_allowed_blocks', 10, 2 );
 function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
-  // перечисли только свои блоки по namespace
   return [
+    // твои блоки
     'theme/main-block',
     'theme/mgu-advantages',
+
+    // стандартные блоки
     'core/paragraph',
     'core/list',
+    'core/list-item',
     'core/quote',
     'core/table',
     'core/code',
     'core/spacer',
+    'core/image',
+    'core/column',
+    'core/columns',
   ];
 }
+
