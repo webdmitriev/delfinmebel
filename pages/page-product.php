@@ -10,7 +10,7 @@ $url = get_template_directory_uri();
 $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==';
 ?>
 
-  <div class="block-17" data-product-id="<?= get_the_ID() || 0; ?>">
+  <div class="block-17" data-product-id="product-<?= get_the_ID() || 0; ?>">
     <div class="container df-sp-fs">
       <div class="block-thumbnail">
         <img src="<?= $url; ?>/assets/img/block-04/image-01.png" alt="alto" class="block-thumbnail__main" />
@@ -32,7 +32,6 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
           <span class="price-new">1 000</span>
           <span class="price-old">1 200</span>
         </div>
-
         <div class="product-excerpt">Каркас дугообразный регулируемый/нерегулируемый. Ростовые группы-2,3,4,5,6.,пластиковые заглушки на концах труб, столешница ЛДСП 16 мм, закругленные края (по выбору),противоударная кромка ПВХ 2 мм,эргономические выемки (по выбору), сиденья и спинки натуральная гнутоклееная фанера, покрытая бесцветным лаком. Вы можете выбрать любой цвет каркаса металла (опоры стола и стульев), столешницы, кромки ПВХ.</div>
         <button class="product-order">Сделать заказ</button>
       </div>
