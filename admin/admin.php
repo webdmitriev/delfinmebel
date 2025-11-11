@@ -43,6 +43,12 @@ require get_template_directory() . '/admin/helpers/sitemap.php';
 
 
 /**
+ * Remove uncategorized category
+ */
+require get_template_directory() . '/admin/helpers/remove-uncategorized-category.php';
+
+
+/**
  * Advanced Auto Linking
  */
 // require_once get_template_directory() . '/admin/helpers/AdvancedAutoLinking.php';
