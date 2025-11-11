@@ -37,6 +37,8 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
 
     // стандартные блоки
     'core/paragraph',
+    'core/html',
+    'core/video',
     'core/list',
     'core/list-item',
     'core/quote',
