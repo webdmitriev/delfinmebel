@@ -91,7 +91,11 @@
       color: #fff;
     }
   }
-  .product .product-link:hover {
+  .product .product-link:hover,
+  .product .favorite-btn:hover {
     background-color: rgba(#5765ae, 0.7);
+  }
+  .product .favorite-btn:hover {
+    transform: scale(1.08);
   }
 }
