@@ -27,11 +27,16 @@
   }
 }
 
-.wp-block-image {
+.wp-block-image,
+.wp-block-video {
   width: 100%;
 }
 .wp-block-image img {
   width: 100%;
+}
+.wp-block-video video {
+  height: inherit;
+  aspect-ratio: 16 / 9;
 }
 
 .wp-block-list {
