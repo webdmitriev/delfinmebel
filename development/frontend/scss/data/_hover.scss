@@ -2,11 +2,15 @@
   // ******
   // header
   .header .header-menu .menu-item a:hover,
-  .header .header-social:hover {
+  .header .header-social:hover,
+  .header .basket-link:hover {
     color: #ffffff;
     background-color: rgba(#5765ae, 0.8);
     svg {
       stroke: #fff;
+    }
+    span {
+      color: #ffffff;
     }
   }
   .header .header-menu .menu-item:hover > ul.sub-menu {

@@ -33,7 +33,10 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
           <span class="price-old">1 200</span>
         </div>
         <div class="product-excerpt">Каркас дугообразный регулируемый/нерегулируемый. Ростовые группы-2,3,4,5,6.,пластиковые заглушки на концах труб, столешница ЛДСП 16 мм, закругленные края (по выбору),противоударная кромка ПВХ 2 мм,эргономические выемки (по выбору), сиденья и спинки натуральная гнутоклееная фанера, покрытая бесцветным лаком. Вы можете выбрать любой цвет каркаса металла (опоры стола и стульев), столешницы, кромки ПВХ.</div>
-        <button class="product-order">Сделать заказ</button>
+        <div class="product-buttons df-fs-st w-100p" style="gap: 16px">
+          <button class="product-order product-popup-show">Запросить детали</button>
+          <button class="product-order add-to-basket">Добавить в корзину</button>
+        </div>
       </div>
     </div>
   </div>

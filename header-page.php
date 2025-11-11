@@ -68,6 +68,10 @@ $url = get_template_directory_uri();
 						</svg>
 					</a>
 
+					<a href="/basket" class="basket-link" data-icon="🛒">
+						<span class="basket-counter" style="display: none;">0</span>
+					</a>
+
           <button class="burger"><span></span></button>
         </div>
       </div>

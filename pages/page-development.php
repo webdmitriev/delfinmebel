@@ -52,6 +52,10 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
 						</svg>
           </a>
 
+					<a href="/basket" class="basket-link" data-icon="🛒">
+						<span class="basket-counter" style="display: none;">0</span>
+					</a>
+
           <button class="burger"><span></span></button>
         </div>
       </div>
