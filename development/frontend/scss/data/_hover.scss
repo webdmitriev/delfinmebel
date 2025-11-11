@@ -69,6 +69,18 @@
     background-color: rgba(#5765ae, 0.7);
   }
 
+  .block-20 .blog-items .blog-item:hover {
+    background-color: rgba(#5765ae, 0.7);
+    .blog-item__title,
+    .blog-item__descr,
+    .blog-item__link {
+      color: var(--white-color);
+    }
+    .blog-item__image {
+      transform: scale(1.05);
+    }
+  }
+
   // *******
   // product
   .product:hover {
