@@ -15,12 +15,14 @@ class BasketManager {
   saveBasket() {
     localStorage.setItem(this.storageKey, JSON.stringify(this.basket));
     this.updateBasketCounter();
+    this.updateProductPageButton(); // Обновляем кнопку на странице товара
   }
 
   // Инициализация
   init() {
     this.bindEvents();
     this.updateBasketCounter();
+    this.updateProductPageButton(); // Инициализируем состояние кнопки
 
     // Если мы на странице корзины, рендерим товары
     if (this.isBasketPage()) {
@@ -28,10 +30,52 @@ class BasketManager {
     }
   }
 
+  // Проверяем, находимся ли на странице товара
+  isProductPage() {
+    return document.querySelector('.block-17') !== null;
+  }
+
   // Проверяем, находимся ли на странице корзины
   isBasketPage() {
     return window.location.pathname.includes('/basket') ||
       document.querySelector('.block-23') !== null;
+  }
+
+  // Обновляем кнопку на странице товара
+  updateProductPageButton() {
+    if (!this.isProductPage()) return;
+
+    const productId = this.getProductId();
+    const addToBasketBtn = document.querySelector('.add-to-basket');
+
+    if (addToBasketBtn && productId) {
+      const isInBasket = this.isInBasket(productId);
+
+      if (isInBasket) {
+        addToBasketBtn.classList.add('in-basket');
+        addToBasketBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    В корзине
+                `;
+        addToBasketBtn.setAttribute('title', 'Товар уже в корзине');
+      } else {
+        addToBasketBtn.classList.remove('in-basket');
+        addToBasketBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="margin-right: 8px;">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18m-5 4a4 4 0 1 1-8 0"/>
+                    </svg>
+                    Добавить в корзину
+                `;
+        addToBasketBtn.setAttribute('title', 'Добавить товар в корзину');
+      }
+    }
+  }
+
+  // Проверяем, есть ли товар в корзине
+  isInBasket(productId) {
+    return this.basket.some(item => item.id === productId);
   }
 
   // Добавляем товар в корзину
@@ -182,7 +226,7 @@ class BasketManager {
                 <div class="empty-basket__icon">🛒</div>
                 <h3>Корзина пуста</h3>
                 <p>Добавьте товары, чтобы сделать заказ</p>
-                <a href="/catalog" class="btn btn-primary">Перейти в каталог</a>
+                <a href="/" class="btn btn-primary">Перейти в каталог</a>
             </div>
         `;
   }
@@ -218,7 +262,7 @@ class BasketManager {
             </div>
             <div class="basket-actions">
                 <button class="btn btn-primary basket-submit" data-basket-submit>Оформить заказ</button>
-                <a href="/" class="btn btn-secondary">На главную</a>
+                <a href="/" class="btn btn-secondary">Продолжить покупки</a>
             </div>
         `;
   }
@@ -302,7 +346,13 @@ class BasketManager {
         const productId = this.getProductId();
         const productData = this.getProductData();
 
-        this.addToBasket(productId, productData);
+        if (this.isInBasket(productId)) {
+          // Если товар уже в корзине, удаляем его
+          this.removeFromBasket(productId);
+        } else {
+          // Если товара нет в корзине, добавляем
+          this.addToBasket(productId, productData);
+        }
       }
     });
 

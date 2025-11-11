@@ -123,6 +123,46 @@
       border-radius: 8px;
       transition: all 0.3s ease;
     }
+    .add-to-basket {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border: 2px solid #ff6b6b;
+      border-radius: 8px;
+      background: #ff6b6b;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+      font-weight: 600;
+
+      &:hover {
+        background: #ff5252;
+        border-color: #ff5252;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+      }
+
+      // Состояние "В корзине"
+      &.in-basket {
+        background: #51cf66;
+        border-color: #51cf66;
+
+        &:hover {
+          background: #40c057;
+          border-color: #40c057;
+          box-shadow: 0 4px 12px rgba(81, 207, 102, 0.3);
+        }
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+    }
   }
 
   .product-favorite-btn {
