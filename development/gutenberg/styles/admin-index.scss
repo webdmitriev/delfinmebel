@@ -53,7 +53,6 @@
     .block-label {
       display: block;
       width: 100%;
-      margin-bottom: 5px;
       font-family: "Montserrat", sans-serif;
       font-size: 13px;
       line-height: 1.4;
@@ -105,20 +104,97 @@
         }
       }
     }
+    .video-section {
+      .block-label {
+        margin-bottom: 8px;
+      }
+      .video-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        width: 100%;
+        gap: 8px;
+        margin-bottom: 24px;
+        .video-upload,
+        .video-poster {
+          display: block;
+          width: 100%;
+          max-width: calc(33% - 8px);
+          video,
+          img {
+            display: block;
+            width: 100%;
+            height: inherit;
+            aspect-ratio: 16 / 9;
+          }
+          .video-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+            margin-top: 8px;
+          }
+          .components-button {
+            display: block;
+            width: 100%;
+            max-width: 60%;
+            padding: 4px;
+            font-size: 11px;
+            border: 1px solid #007cba;
+            border-radius: 8px;
+            &.is-destructive {
+              max-width: 36%;
+            }
+          }
+        }
+      }
+    }
     .repeater-items {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
       align-items: flex-start;
-      gap: 16px;
+      gap: 8px;
+      margin-bottom: 24px;
       .repeater-item {
         display: block;
         width: 100%;
-        max-width: calc(33% - 10px);
+        max-width: calc(33% - 4px);
+        padding: 8px;
+        background-color: rgba(0, 124, 186, 0.25);
+        border-radius: 10px;
+      }
+      .repeater-image-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        width: 100%;
+        margin-bottom: 8px;
+        .components-button.is-primary.is-small,
+        .components-button.is-secondary.is-small {
+          display: block;
+          height: inherit;
+          min-height: auto;
+          padding: 4px;
+          font-size: 12px;
+          line-height: 1.2;
+          border-radius: 4px;
+        }
+        .components-button.is-primary.is-small {
+          width: 100%;
+        }
+        .components-button.is-secondary.is-small {
+          width: 48%;
+        }
       }
       .add-repeater-item {
         display: block;
         width: 100%;
+        padding: 8px;
+        background-color: rgba(0, 124, 186, 0.25);
+        border-radius: 10px;
       }
     }
   }

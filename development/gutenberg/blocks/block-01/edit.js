@@ -1,9 +1,5 @@
 import { useState } from '@wordpress/element';
-import {
-  useBlockProps,
-  RichText,
-  InspectorControls
-} from '@wordpress/block-editor';
+import { useBlockProps, RichText, InspectorControls, MediaUpload } from '@wordpress/block-editor';
 import { Button, RadioControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -16,8 +12,12 @@ import ContentPanel from './controls/ContentPanel';
 const Edit = ({ attributes, setAttributes }) => {
   const {
     title,
+    titleColor,
     items,
-    params
+    params,
+    videoMP4,
+    videoWEBM,
+    videoPoster
   } = attributes;
 
   const [viewMode, setViewMode] = useState('edit'); // 'preview' | 'edit'
@@ -71,6 +71,12 @@ const Edit = ({ attributes, setAttributes }) => {
                   onChange={(value) => setAttributes({ title: value })}
                   placeholder={__('Заголовок...', 'theme')}
                   allowedFormats={['core/bold']}
+                />
+                <RichText
+                  tagName="div"
+                  value={titleColor}
+                  onChange={(value) => setAttributes({ titleColor: value })}
+                  placeholder={__('Текст для окрашивания', 'theme')}
                 />
               </div>
 
@@ -131,6 +137,133 @@ const Edit = ({ attributes, setAttributes }) => {
                 >
                   {__('+ Добавить элемент', 'theme')}
                 </Button>
+              </div>
+
+              {/* 🎥 Видео фон */}
+              <div className="video-section">
+                <span className="block-label">{__('Видео фон', 'theme')}</span>
+
+                <div className="video-controls">
+                  {/* MP4 */}
+                  <MediaUpload
+                    onSelect={(media) =>
+                      setAttributes({ videoMP4: { id: media.id, url: media.url, title: media.title } })
+                    }
+                    allowedTypes={['video']}
+                    value={videoMP4?.id}
+                    render={({ open }) => (
+                      <div className="video-upload">
+                        {videoMP4?.url ? (
+                          <>
+                            <video
+                              src={videoMP4.url}
+                              controls
+                              style={{
+                                width: '100%',
+                                maxHeight: '180px',
+                                borderRadius: '8px',
+                                objectFit: 'cover',
+                              }}
+                            />
+                            <div className="video-actions">
+                              <Button onClick={open}>✏️ {__('Заменить MP4', 'theme')}</Button>
+                              <Button
+                                isDestructive
+                                onClick={() => setAttributes({ videoMP4: { id: 0, url: '', title: '' } })}
+                              >
+                                ❌ {__('Удалить', 'theme')}
+                              </Button>
+                            </div>
+                          </>
+                        ) : (
+                          <Button onClick={open} variant="primary">
+                            {__('Загрузить MP4', 'theme')}
+                          </Button>
+                        )}
+                      </div>
+                    )}
+                  />
+
+                  {/* WEBM */}
+                  <MediaUpload
+                    onSelect={(media) =>
+                      setAttributes({ videoWEBM: { id: media.id, url: media.url, title: media.title } })
+                    }
+                    allowedTypes={['video']}
+                    value={videoWEBM?.id}
+                    render={({ open }) => (
+                      <div className="video-upload">
+                        {videoWEBM?.url ? (
+                          <>
+                            <video
+                              src={videoWEBM.url}
+                              controls
+                              style={{
+                                width: '100%',
+                                maxHeight: '180px',
+                                borderRadius: '8px',
+                                objectFit: 'cover',
+                              }}
+                            />
+                            <div className="video-actions">
+                              <Button onClick={open}>✏️ {__('Заменить WEBM', 'theme')}</Button>
+                              <Button
+                                isDestructive
+                                onClick={() => setAttributes({ videoWEBM: { id: 0, url: '', title: '' } })}
+                              >
+                                ❌ {__('Удалить', 'theme')}
+                              </Button>
+                            </div>
+                          </>
+                        ) : (
+                          <Button onClick={open} variant="secondary">
+                            {__('Загрузить WEBM', 'theme')}
+                          </Button>
+                        )}
+                      </div>
+                    )}
+                  />
+
+                  {/* Poster */}
+                  <MediaUpload
+                    onSelect={(media) =>
+                      setAttributes({ videoPoster: { id: media.id, url: media.url, alt: media.alt } })
+                    }
+                    allowedTypes={['image']}
+                    value={videoPoster?.id}
+                    render={({ open }) => (
+                      <div className="video-poster">
+                        {videoPoster?.url ? (
+                          <>
+                            <img
+                              src={videoPoster.url}
+                              alt={videoPoster.alt || ''}
+                              style={{
+                                width: '100%',
+                                maxHeight: '180px',
+                                borderRadius: '8px',
+                                objectFit: 'cover',
+                              }}
+                            />
+                            <div className="video-actions">
+                              <Button onClick={open}>✏️ {__('Заменить постер', 'theme')}</Button>
+                              <Button
+                                isDestructive
+                                onClick={() => setAttributes({ videoPoster: { id: 0, url: '', alt: '' } })}
+                              >
+                                ❌ {__('Удалить', 'theme')}
+                              </Button>
+                            </div>
+                          </>
+                        ) : (
+                          <Button onClick={open} variant="secondary">
+                            {__('Добавить постер', 'theme')}
+                          </Button>
+                        )}
+                      </div>
+                    )}
+                  />
+                </div>
               </div>
             </div>
           )}

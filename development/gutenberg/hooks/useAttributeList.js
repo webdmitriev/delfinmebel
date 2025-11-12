@@ -69,8 +69,9 @@ export function useAttributeList(attributes, setAttributes, key) {
                 src={param[field].url}
                 alt={param[field].alt || ''}
                 style={{
-                  width: '64px',
-                  height: '64px',
+                  width: '84px',
+                  height: '84px',
+                  marginBottom: '8px',
                   objectFit: 'contain',
                   borderRadius: '6px',
                   border: '1px solid #ddd',

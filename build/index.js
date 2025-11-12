@@ -28,6 +28,10 @@ const attributes = {
     type: 'string',
     default: ''
   },
+  titleColor: {
+    type: 'string',
+    default: ''
+  },
   items: {
     type: 'array',
     default: [{
@@ -41,6 +45,30 @@ const attributes = {
       imageID: 0,
       content: ''
     }]
+  },
+  videoMP4: {
+    type: 'object',
+    default: {
+      id: 0,
+      url: '',
+      title: ''
+    }
+  },
+  videoWEBM: {
+    type: 'object',
+    default: {
+      id: 0,
+      url: '',
+      title: ''
+    }
+  },
+  videoPoster: {
+    type: 'object',
+    default: {
+      id: 0,
+      url: '',
+      alt: ''
+    }
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
@@ -217,8 +245,12 @@ const Edit = ({
 }) => {
   const {
     title,
+    titleColor,
     items,
-    params
+    params,
+    videoMP4,
+    videoWEBM,
+    videoPoster
   } = attributes;
   const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('edit'); // 'preview' | 'edit'
 
@@ -281,6 +313,13 @@ const Edit = ({
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Заголовок...', 'theme'),
     allowedFormats: ['core/bold']
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "div",
+    value: titleColor,
+    onChange: value => setAttributes({
+      titleColor: value
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Текст для окрашивания', 'theme')
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "repeater-items"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -342,7 +381,133 @@ const Edit = ({
       content: ''
     }),
     className: "add-repeater-item"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('+ Добавить элемент', 'theme')))))));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('+ Добавить элемент', 'theme'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "video-section"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "block-label"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Видео фон', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "video-controls"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => setAttributes({
+      videoMP4: {
+        id: media.id,
+        url: media.url,
+        title: media.title
+      }
+    }),
+    allowedTypes: ['video'],
+    value: videoMP4?.id,
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "video-upload"
+    }, videoMP4?.url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
+      src: videoMP4.url,
+      controls: true,
+      style: {
+        width: '100%',
+        maxHeight: '180px',
+        borderRadius: '8px',
+        objectFit: 'cover'
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "video-actions"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open
+    }, "\u270F\uFE0F ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Заменить MP4', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      isDestructive: true,
+      onClick: () => setAttributes({
+        videoMP4: {
+          id: 0,
+          url: '',
+          title: ''
+        }
+      })
+    }, "\u274C ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Удалить', 'theme')))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open,
+      variant: "primary"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загрузить MP4', 'theme')))
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => setAttributes({
+      videoWEBM: {
+        id: media.id,
+        url: media.url,
+        title: media.title
+      }
+    }),
+    allowedTypes: ['video'],
+    value: videoWEBM?.id,
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "video-upload"
+    }, videoWEBM?.url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
+      src: videoWEBM.url,
+      controls: true,
+      style: {
+        width: '100%',
+        maxHeight: '180px',
+        borderRadius: '8px',
+        objectFit: 'cover'
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "video-actions"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open
+    }, "\u270F\uFE0F ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Заменить WEBM', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      isDestructive: true,
+      onClick: () => setAttributes({
+        videoWEBM: {
+          id: 0,
+          url: '',
+          title: ''
+        }
+      })
+    }, "\u274C ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Удалить', 'theme')))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open,
+      variant: "secondary"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загрузить WEBM', 'theme')))
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: media => setAttributes({
+      videoPoster: {
+        id: media.id,
+        url: media.url,
+        alt: media.alt
+      }
+    }),
+    allowedTypes: ['image'],
+    value: videoPoster?.id,
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "video-poster"
+    }, videoPoster?.url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: videoPoster.url,
+      alt: videoPoster.alt || '',
+      style: {
+        width: '100%',
+        maxHeight: '180px',
+        borderRadius: '8px',
+        objectFit: 'cover'
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "video-actions"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open
+    }, "\u270F\uFE0F ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Заменить постер', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      isDestructive: true,
+      onClick: () => setAttributes({
+        videoPoster: {
+          id: 0,
+          url: '',
+          alt: ''
+        }
+      })
+    }, "\u274C ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Удалить', 'theme')))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onClick: open,
+      variant: "secondary"
+    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Добавить постер', 'theme')))
+  })))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -640,8 +805,9 @@ function useAttributeList(attributes, setAttributes, key) {
       src: param[field].url,
       alt: param[field].alt || '',
       style: {
-        width: '64px',
-        height: '64px',
+        width: '84px',
+        height: '84px',
+        marginBottom: '8px',
         objectFit: 'contain',
         borderRadius: '6px',
         border: '1px solid #ddd'
