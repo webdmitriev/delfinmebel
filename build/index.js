@@ -863,6 +863,27 @@ const Edit = ({
       setIsLoading(false);
     }
   };
+
+  // Эффект для очистки удаленных категорий при изменении categories
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (categories.length > 0 && selectedCategories.length > 0) {
+      cleanupDeletedCategories();
+    }
+  }, [categories]); // Запускаем когда categories обновляются
+
+  // Очистка удаленных категорий из selectedCategories
+  const cleanupDeletedCategories = () => {
+    const existingCategoryIds = categories.map(cat => cat.id);
+    const validSelectedCategories = selectedCategories.filter(id => existingCategoryIds.includes(id));
+
+    // Если есть невалидные категории, обновляем атрибуты
+    if (validSelectedCategories.length !== selectedCategories.length) {
+      console.log('Очистка: было', selectedCategories.length, 'стало', validSelectedCategories.length);
+      setAttributes({
+        selectedCategories: validSelectedCategories
+      });
+    }
+  };
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     loadAllCategories();
   }, []);
@@ -877,6 +898,21 @@ const Edit = ({
       });
     }
   };
+
+  // Функция для ручной очистки несуществующих категорий
+  const handleCleanup = () => {
+    const existingCategoryIds = categories.map(cat => cat.id);
+    const validSelectedCategories = selectedCategories.filter(id => existingCategoryIds.includes(id));
+    setAttributes({
+      selectedCategories: validSelectedCategories
+    });
+  };
+
+  // Получаем только существующие выбранные категории
+  const existingSelectedCategories = selectedCategories.filter(id => categories.some(cat => cat.id === id));
+
+  // Получаем несуществующие выбранные категории
+  const deletedCategories = selectedCategories.filter(id => !categories.some(cat => cat.id === id));
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: 'development block-04'
   });
@@ -889,7 +925,33 @@ const Edit = ({
       maxHeight: '400px',
       overflowY: 'auto'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выберите категории', 'theme')), isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выберите категории', 'theme')), deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      background: '#fff3cd',
+      border: '1px solid #ffeaa7',
+      borderRadius: '4px',
+      padding: '12px',
+      marginBottom: '16px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      margin: '0 0 8px 0',
+      fontWeight: 'bold',
+      color: '#856404'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Найдены удаленные категории', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      margin: '0 0 12px 0',
+      fontSize: '12px',
+      color: '#856404'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Некоторые выбранные категории были удалены из системы', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: "secondary",
+    onClick: handleCleanup,
+    style: {
+      fontSize: '12px'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Очистить несуществующие категории', 'theme'))), isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       textAlign: 'center'
     }
@@ -904,7 +966,11 @@ const Edit = ({
       fontSize: '12px',
       color: '#666'
     }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загружено категорий:', 'theme'), " ", categories.length)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загружено категорий:', 'theme'), " ", categories.length, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выбрано категорий:', 'theme'), " ", existingSelectedCategories.length, deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: {
+      color: '#dc3545'
+    }
+  }, ' ', "(+", deletedCategories.length, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('удаленных', 'theme'), ")"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block"
@@ -937,30 +1003,76 @@ const Edit = ({
     }
   }), viewMode === 'edit' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-content"
-  }, selectedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      background: '#fff3cd',
+      border: '1px solid #ffeaa7',
+      borderRadius: '4px',
+      padding: '12px',
+      marginBottom: '16px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      margin: '0',
+      color: '#856404'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('⚠️ Некоторые выбранные категории были удалены', 'theme'))), existingSelectedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "selected-categories"
-  }, selectedCategories.map(id => {
+  }, existingSelectedCategories.map(id => {
     const cat = categories.find(c => c.id === id);
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: id,
       style: {
-        marginBottom: '8px'
+        marginBottom: '8px',
+        padding: '8px',
+        border: '1px solid #e0e0e0',
+        borderRadius: '4px'
       },
       className: "selected-category"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "category-name"
-    }, cat?.name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: "category-description"
-    }, cat?.description), cat?.image && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontWeight: 'bold'
+      }
+    }, cat?.name), cat?.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        fontSize: '12px',
+        color: '#666',
+        marginTop: '4px'
+      }
+    }, cat.description), cat?.image && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: cat.image.url,
       alt: "",
       style: {
-        width: '100px',
-        height: '100px',
-        objectFit: 'cover'
+        width: '80px',
+        height: '80px',
+        objectFit: 'cover',
+        marginTop: '8px',
+        borderRadius: '4px'
       }
     }));
-  }))))));
+  })), deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "deleted-categories",
+    style: {
+      marginTop: '16px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+    style: {
+      marginBottom: '12px',
+      color: '#dc3545',
+      fontSize: '14px'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Удаленные категории (будут автоматически удалены):', 'theme')), deletedCategories.map(id => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: id,
+    style: {
+      marginBottom: '4px',
+      padding: '4px 8px',
+      background: '#f8d7da',
+      border: '1px solid #f5c6cb',
+      borderRadius: '4px',
+      fontSize: '12px',
+      color: '#721c24'
+    }
+  }, "ID: ", id, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('(категория удалена)', 'theme'))))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
