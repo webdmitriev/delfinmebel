@@ -62,7 +62,10 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     </header>
 
     <div class="block-01-video df-fe-fe">
-      <!-- <video src="<?= $url ?>/assets/img/block-01/video.mp4" autoplay loop muted></video> -->
+      <video autoplay muted loop playsinline preload="metadata" poster="<?= $url ?>/assets/img/block-01/poster.jpg" aria-hidden="true">
+        <source src="<?= $url ?>/assets/img/block-01/video-01.webm" type="video/webm">
+        <source src="<?= $url ?>/assets/img/block-01/video-01.mp4" type="video/mp4">
+      </video>
     </div>
 
     <div class="container">
