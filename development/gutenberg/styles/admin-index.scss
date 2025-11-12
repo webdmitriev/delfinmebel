@@ -50,6 +50,22 @@
         }
       }
     }
+    .rich-texts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 8px;
+      width: 100%;
+      .rich-text {
+        max-width: calc(50% - 4px);
+        margin-bottom: 8px;
+      }
+    }
+    .rich-text {
+      display: block;
+      width: 100%;
+    }
     .block-label {
       display: block;
       width: 100%;
