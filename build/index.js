@@ -319,7 +319,8 @@ const Edit = ({
     onChange: value => setAttributes({
       titleColor: value
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Текст для окрашивания', 'theme')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Текст для окрашивания', 'theme'),
+    allowedFormats: []
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "repeater-items"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -571,23 +572,61 @@ const Save = ({
 }) => {
   const {
     title,
+    titleColor,
     items,
-    params
+    params,
+    videoMP4,
+    videoWEBM,
+    videoPoster
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: `block-01`
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("main", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "container df-sp-ce"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mgu-main__content"
+  }, videoMP4 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-01-video df-fe-fe"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    preload: "metadata",
+    poster: videoPoster.url,
+    "aria-hidden": "true"
+  }, videoWEBM && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+    src: videoWEBM.url,
+    type: "video/webm"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+    src: videoMP4.url,
+    type: "video/mp4"
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "container"
   }, title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h1",
     value: title,
-    className: "h1"
-  }))));
+    className: "h1",
+    "data-color": titleColor
+  }), items.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-items df-fs-st w-100p"
+  }, items.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    key: index,
+    tagName: "div",
+    value: item.content,
+    className: "block-item"
+  })))), params.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "data-items df-sp-fs"
+  }, params.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
+    className: "data-item"
+  }, item.image?.url && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: item.image.url,
+    alt: item.image.alt || ''
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "span",
+    value: item.content,
+    className: "advantages-item__content"
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 

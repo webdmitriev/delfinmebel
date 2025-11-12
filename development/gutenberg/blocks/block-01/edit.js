@@ -77,6 +77,7 @@ const Edit = ({ attributes, setAttributes }) => {
                   value={titleColor}
                   onChange={(value) => setAttributes({ titleColor: value })}
                   placeholder={__('Текст для окрашивания', 'theme')}
+                  allowedFormats={[]}
                 />
               </div>
 
@@ -139,7 +140,6 @@ const Edit = ({ attributes, setAttributes }) => {
                 </Button>
               </div>
 
-              {/* 🎥 Видео фон */}
               <div className="video-section">
                 <span className="block-label">{__('Видео фон', 'theme')}</span>
 
