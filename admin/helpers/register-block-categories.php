@@ -32,8 +32,7 @@ add_filter( 'allowed_block_types_all', 'theme_allowed_blocks', 10, 2 );
 function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
   return [
     // твои блоки
-    'theme/main-block',
-    'theme/mgu-advantages',
+    'theme/block-01',
 
     // стандартные блоки
     'core/paragraph',
