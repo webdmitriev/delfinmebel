@@ -165,6 +165,17 @@
         background-color: rgba(0, 124, 186, 0.25);
         border-radius: 10px;
       }
+      .repeater-image {
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+        .components-button.is-primary {
+          display: block;
+          width: 100%;
+          height: inherit;
+          min-height: auto;
+        }
+      }
       .repeater-image-controls {
         display: flex;
         flex-wrap: wrap;
