@@ -33,6 +33,7 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
   return [
     // твои блоки
     'theme/block-01',
+    'theme/block-02',
 
     // стандартные блоки
     'core/paragraph',
