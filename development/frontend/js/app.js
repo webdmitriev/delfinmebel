@@ -76,6 +76,31 @@ document.addEventListener('DOMContentLoaded', function () {
     $(".popup").hide()
   })
 
+  $('.block-23').on('click', '.basket-submit', function () {
+    openOrderPopup()
+  })
+
+  // Функция для открытия попапа с формой
+  function openOrderPopup() {
+    // Заполняем поле корзины перед открытием попапа
+    if (window.basketManager) {
+      window.basketManager.fillBasketFormField();
+    }
+
+    // Ваш код открытия попапа
+    document.querySelector('.popup-basket').style.display = 'block';
+  }
+
+  // Обновляем данные при клике на кнопку оформления заказа
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.basket-submit')) {
+
+      if (window.basketManager) {
+        window.basketManager.fillBasketFormField();
+      }
+    }
+  });
+
   // ***********
   // updateSpeed
   updateSpeed()

@@ -361,9 +361,92 @@ class BasketManager {
       this.renderBasketPage();
     }
   }
+
+  // Собираем данные корзины для формы
+  getBasketDataForForm() {
+    const basketItems = this.getBasketItems();
+
+    if (basketItems.length === 0) {
+      return 'Корзина пуста';
+    }
+
+    const itemsText = basketItems.map(item => {
+      return `${item.title} (Артикул: ${item.articulate}) - ${item.quantity} шт. - ${item.price} ₽`;
+    }).join('\n');
+
+    const totalPrice = this.getTotalPrice();
+    const totalText = `\n\nИтого: ${this.formatPrice(totalPrice)} ₽`;
+
+    return itemsText + totalText;
+  }
+
+  // Заполняем скрытое поле в форме
+  fillBasketFormField() {
+    const basketField = document.querySelector('input[name="your-basket"], textarea[name="your-basket"]');
+
+    if (basketField) {
+      basketField.value = this.getBasketDataForForm();
+    }
+  }
+
+  // Инициализация для форм
+  initForms() {
+    // Заполняем поле при загрузке
+    this.fillBasketFormField();
+
+    // Обновляем поле при изменении корзины
+    this.observeBasketChanges();
+
+    // Обновляем поле перед отправкой формы (на всякий случай)
+    this.bindFormSubmit();
+  }
+
+  // Наблюдаем за изменениями корзины
+  observeBasketChanges() {
+    // Перехватываем методы изменения корзины
+    const originalAdd = this.addToBasket;
+    const originalRemove = this.removeFromBasket;
+
+    this.addToBasket = (productId, productData) => {
+      originalAdd.call(this, productId, productData);
+      this.fillBasketFormField();
+    };
+
+    this.removeFromBasket = (productId) => {
+      originalRemove.call(this, productId);
+      this.fillBasketFormField();
+    };
+  }
+
+  // Привязываемся к отправке формы
+  bindFormSubmit() {
+    document.addEventListener('wpcf7submit', () => {
+      // Очищаем корзину после успешной отправки
+      this.clearBasket();
+    });
+
+    // Для обычных форм
+    document.addEventListener('submit', (e) => {
+      if (e.target.querySelector('[name="your-basket"]')) {
+        this.fillBasketFormField();
+      }
+    });
+  }
+
+  // Очищаем корзину после отправки
+  clearBasket() {
+    this.basket = [];
+    this.saveBasket();
+    this.showNotification('Заказ отправлен! Корзина очищена.');
+  }
 }
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', function () {
   window.basketManager = new BasketManager();
+
+  // Инициализируем работу с формами
+  setTimeout(() => {
+    window.basketManager.initForms();
+  }, 1000);
 });
