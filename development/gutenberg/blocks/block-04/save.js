@@ -6,7 +6,7 @@ const Save = ({ attributes }) => {
   } = attributes;
 
   const blockProps = useBlockProps.save({
-    className: `block-02`,
+    className: `block-04`,
   });
 
   return (

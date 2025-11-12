@@ -12,14 +12,14 @@ module.exports = __webpack_require__.p + "images/block-01.7ff2de7b.jpg";
 
 /***/ }),
 
-/***/ "./admin/assets/img/blocks/block-02.jpg":
+/***/ "./admin/assets/img/blocks/block-04.jpg":
 /*!**********************************************!*\
-  !*** ./admin/assets/img/blocks/block-02.jpg ***!
+  !*** ./admin/assets/img/blocks/block-04.jpg ***!
   \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/block-02.ecc65301.jpg";
+module.exports = __webpack_require__.p + "images/block-04.ecc65301.jpg";
 
 /***/ }),
 
@@ -643,9 +643,9 @@ const Save = ({
 
 /***/ }),
 
-/***/ "./development/gutenberg/blocks/block-02/attributes.js":
+/***/ "./development/gutenberg/blocks/block-04/attributes.js":
 /*!*************************************************************!*\
-  !*** ./development/gutenberg/blocks/block-02/attributes.js ***!
+  !*** ./development/gutenberg/blocks/block-04/attributes.js ***!
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -658,15 +658,19 @@ const attributes = {
   title: {
     type: 'string',
     default: ''
+  },
+  selectedCategories: {
+    type: 'array',
+    default: []
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
 
 /***/ }),
 
-/***/ "./development/gutenberg/blocks/block-02/controls/ContentPanel.js":
+/***/ "./development/gutenberg/blocks/block-04/controls/ContentPanel.js":
 /*!************************************************************************!*\
-  !*** ./development/gutenberg/blocks/block-02/controls/ContentPanel.js ***!
+  !*** ./development/gutenberg/blocks/block-04/controls/ContentPanel.js ***!
   \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -733,9 +737,9 @@ const ContentPanel = ({
 
 /***/ }),
 
-/***/ "./development/gutenberg/blocks/block-02/controls/VideoHelpPanel.js":
+/***/ "./development/gutenberg/blocks/block-04/controls/VideoHelpPanel.js":
 /*!**************************************************************************!*\
-  !*** ./development/gutenberg/blocks/block-02/controls/VideoHelpPanel.js ***!
+  !*** ./development/gutenberg/blocks/block-04/controls/VideoHelpPanel.js ***!
   \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -793,9 +797,9 @@ const VideoHelpPanel = () => {
 
 /***/ }),
 
-/***/ "./development/gutenberg/blocks/block-02/edit.js":
+/***/ "./development/gutenberg/blocks/block-04/edit.js":
 /*!*******************************************************!*\
-  !*** ./development/gutenberg/blocks/block-02/edit.js ***!
+  !*** ./development/gutenberg/blocks/block-04/edit.js ***!
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -814,9 +818,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _admin_assets_img_blocks_block_02_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/block-02.jpg */ "./admin/assets/img/blocks/block-02.jpg");
-/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/block-02/controls/VideoHelpPanel.js");
-/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/block-02/controls/ContentPanel.js");
+/* harmony import */ var _admin_assets_img_blocks_block_04_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/block-04.jpg */ "./admin/assets/img/blocks/block-04.jpg");
+/* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/block-04/controls/VideoHelpPanel.js");
+/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/block-04/controls/ContentPanel.js");
 
 
 
@@ -830,17 +834,77 @@ const Edit = ({
   setAttributes
 }) => {
   const {
-    title
+    title,
+    selectedCategories
   } = attributes;
-  const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('edit'); // 'preview' | 'edit'
+  const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('edit');
+  const [categories, setCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
 
+  // Загрузка всех категорий
+  const loadAllCategories = async () => {
+    setIsLoading(true);
+    try {
+      let allCategories = [];
+      let page = 1;
+      let hasMore = true;
+      while (hasMore) {
+        const response = await fetch(`${window.wpApiSettings.root}wp/v2/store_categories?per_page=100&page=${page}`);
+        const data = await response.json();
+        allCategories = [...allCategories, ...data];
+        const totalPages = parseInt(response.headers.get('X-WP-TotalPages')) || 1;
+        hasMore = page < totalPages;
+        page++;
+      }
+      setCategories(allCategories);
+    } catch (error) {
+      console.error('Error loading categories:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    loadAllCategories();
+  }, []);
+  const toggleCategory = catId => {
+    if (selectedCategories.includes(catId)) {
+      setAttributes({
+        selectedCategories: selectedCategories.filter(id => id !== catId)
+      });
+    } else {
+      setAttributes({
+        selectedCategories: [...selectedCategories, catId]
+      });
+    }
+  };
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-    className: 'development block-02'
+    className: 'development block-04'
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
     attributes: attributes,
     setAttributes: setAttributes
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      padding: '16px 8px',
+      maxHeight: '400px',
+      overflowY: 'auto'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выберите категории', 'theme')), isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      textAlign: 'center'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Spinner, null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загрузка категорий...', 'theme'))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, categories.map(cat => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
+    key: cat.id,
+    label: cat.name,
+    checked: selectedCategories.includes(cat.id),
+    onChange: () => toggleCategory(cat.id)
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      marginTop: '16px',
+      fontSize: '12px',
+      color: '#666'
+    }
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загружено категорий:', 'theme'), " ", categories.length)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block"
@@ -865,7 +929,7 @@ const Edit = ({
     }],
     onChange: value => setViewMode(value)
   })), viewMode === 'preview' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: _admin_assets_img_blocks_block_02_jpg__WEBPACK_IMPORTED_MODULE_5__,
+    src: _admin_assets_img_blocks_block_04_jpg__WEBPACK_IMPORTED_MODULE_5__,
     className: "preview-image",
     alt: "",
     style: {
@@ -873,30 +937,38 @@ const Edit = ({
     }
   }), viewMode === 'edit' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block-content"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "rich-text",
-    style: {
-      'marginBottom': '16px'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "block-label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Заголовок', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "h2",
-    value: title,
-    onChange: value => setAttributes({
-      title: value
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Заголовок...', 'theme'),
-    allowedFormats: []
+  }, selectedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "selected-categories"
+  }, selectedCategories.map(id => {
+    const cat = categories.find(c => c.id === id);
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: id,
+      style: {
+        marginBottom: '8px'
+      },
+      className: "selected-category"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "category-name"
+    }, cat?.name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "category-description"
+    }, cat?.description), cat?.image && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: cat.image.url,
+      alt: "",
+      style: {
+        width: '100px',
+        height: '100px',
+        objectFit: 'cover'
+      }
+    }));
   }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
 /***/ }),
 
-/***/ "./development/gutenberg/blocks/block-02/index.js":
+/***/ "./development/gutenberg/blocks/block-04/index.js":
 /*!********************************************************!*\
-  !*** ./development/gutenberg/blocks/block-02/index.js ***!
+  !*** ./development/gutenberg/blocks/block-04/index.js ***!
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -904,14 +976,14 @@ const Edit = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./development/gutenberg/blocks/block-02/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./development/gutenberg/blocks/block-02/save.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./development/gutenberg/blocks/block-02/attributes.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./development/gutenberg/blocks/block-04/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./development/gutenberg/blocks/block-04/save.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./development/gutenberg/blocks/block-04/attributes.js");
 
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('theme/block-02', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('theme/block-04', {
   title: 'Каталог мебели',
   category: 'landing',
   icon: 'admin-customizer',
@@ -930,9 +1002,9 @@ console.log('✅ block-02 open');
 
 /***/ }),
 
-/***/ "./development/gutenberg/blocks/block-02/save.js":
+/***/ "./development/gutenberg/blocks/block-04/save.js":
 /*!*******************************************************!*\
-  !*** ./development/gutenberg/blocks/block-02/save.js ***!
+  !*** ./development/gutenberg/blocks/block-04/save.js ***!
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -954,7 +1026,7 @@ const Save = ({
     title
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-    className: `block-02`
+    className: `block-04`
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
@@ -1749,7 +1821,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formats/li-format.js */ "./development/gutenberg/formats/li-format.js");
 /* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_formats_li_format_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _blocks_block_01_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/block-01/index.js */ "./development/gutenberg/blocks/block-01/index.js");
-/* harmony import */ var _blocks_block_02_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/block-02/index.js */ "./development/gutenberg/blocks/block-02/index.js");
+/* harmony import */ var _blocks_block_04_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/block-04/index.js */ "./development/gutenberg/blocks/block-04/index.js");
 // add CEO
 
 
