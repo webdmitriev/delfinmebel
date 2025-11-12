@@ -158,6 +158,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  $(".popup").on('click', '.popup-close', function () {
+    $(".popup").hide()
+  })
+
   // ***********
   // updateSpeed
   updateSpeed()
