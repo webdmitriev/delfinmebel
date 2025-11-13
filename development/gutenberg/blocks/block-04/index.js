@@ -19,4 +19,4 @@ registerBlockType('theme/block-04', {
   },
 });
 
-console.log('✅ block-04 open');
+console.log('✅ block-04');

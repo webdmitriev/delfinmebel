@@ -1291,7 +1291,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
-console.log('✅ block-04 open');
+console.log('✅ block-04');
 
 /***/ }),
 
