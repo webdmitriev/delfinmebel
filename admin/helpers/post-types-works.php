@@ -78,14 +78,12 @@ function register_works_meta_fields() {
     'sanitize_callback' => 'sanitize_text_field',
     'show_in_rest' => true,
   ]);
-
   register_post_meta('works', 'is_popular', [
     'type' => 'boolean',
     'single' => true,
     'sanitize_callback' => 'rest_sanitize_boolean',
     'show_in_rest' => true,
   ]);
-
   register_post_meta('works', 'gallery', [
     'type'              => 'array',
     'single'            => true,
@@ -98,7 +96,7 @@ function register_works_meta_fields() {
         ],
       ],
     ],
-]);
+  ]);
 
 }
 add_action('init', 'register_works_meta_fields');
@@ -340,6 +338,7 @@ function render_popular_works_block($attributes, $content) {
   );
 
   $popular_works = new WP_Query($args);
+  $count_posts = wp_count_posts('works')->publish;
 
   ob_start();
   ?>
@@ -379,8 +378,7 @@ function render_popular_works_block($attributes, $content) {
         <p class="no-products"><?php esc_html_e('Популярные товары появятся скоро!', 'theme'); ?></p>
       <?php endif; ?>
 
-      <!-- data-count="563" -->
-      <a href="/our-works" class="our-works">Смотреть все работы</a>
+      <a href="/our-works" class="our-works" data-count="<?= $count_posts; ?>">Смотреть все работы</a>
     </div>
   </div>
 
