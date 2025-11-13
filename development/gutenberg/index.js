@@ -12,3 +12,4 @@ import './blocks/block-01/index.js';
 import './blocks/block-03/index.js';
 import './blocks/block-04/index.js';
 import './blocks/block-05/index.js';
+import './blocks/block-07/index.js';

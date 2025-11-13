@@ -46,6 +46,7 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
     'theme/block-03',
     'theme/block-04',
     'theme/block-05',
+    'theme/block-07',
 
     // стандартные блоки
     'core/paragraph',
@@ -62,3 +63,20 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
     'core/columns',
   ];
 }
+
+add_filter('wp_kses_allowed_html', function($tags, $context) {
+  if ($context === 'post' || $context === 'page' || $context === 'store') {
+    $tags['iframe'] = [
+      'src' => true,
+      'width' => true,
+      'height' => true,
+      'frameborder' => true,
+      'allow' => true,
+      'allowfullscreen' => true,
+      'webkitAllowFullScreen' => true,
+      'mozallowfullscreen' => true,
+      'style' => true,
+    ];
+  }
+  return $tags;
+}, 10, 2);

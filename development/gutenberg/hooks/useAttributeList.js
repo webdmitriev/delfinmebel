@@ -1,6 +1,6 @@
 import { useCallback } from '@wordpress/element';
 import { MediaUpload, RichText } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
+import { Button, TextControl, TextareaControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 export function useAttributeList(attributes, setAttributes, key) {
@@ -114,5 +114,34 @@ export function useAttributeList(attributes, setAttributes, key) {
     />
   );
 
-  return { list, add, remove, update, moveUp, moveDown, setList, renderImageControl, renderTextControl };
+  // --------------------------
+  // 🔤 Рендер для пары (html + plain text)
+  // --------------------------
+  const renderDualTextControl = (item, index, baseField = 'textPair', options = {}) => {
+    const htmlField = `${baseField}_html`;
+    const plainField = `${baseField}_plain`;
+
+    return (
+      <div className="dual-text-control" style={{ marginBottom: '16px' }}>
+        <span className="block-label">{options.label || __('Текстовый блок', 'theme')}</span>
+
+        <TextareaControl
+          placeholder={__('HTML контент...', 'theme')}
+          value={item[htmlField]}
+          onChange={(value) => update(index, htmlField, value)}
+          className="repeater-content"
+          rows={options.rows || 6}
+          style={{ marginBottom: '8px' }}
+        />
+
+        <TextControl
+          placeholder={__('Обычный текст...', 'theme')}
+          value={item[plainField] || ''}
+          onChange={(value) => update(index, plainField, value)}
+        />
+      </div>
+    );
+  };
+
+  return { list, add, remove, update, moveUp, moveDown, setList, renderImageControl, renderTextControl, renderDualTextControl };
 }
