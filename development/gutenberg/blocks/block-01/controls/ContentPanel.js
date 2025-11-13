@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { useTypograf } from '../../../utils/useTypograf';
 
 const ContentPanel = ({ attributes, setAttributes }) => {
-  const { title, titleColor, items } = attributes;
+  const { title, titleColor, items, params } = attributes;
 
   // Подключаем общий хук
   const { typographField, typographAllFields } = useTypograf(attributes, setAttributes, [

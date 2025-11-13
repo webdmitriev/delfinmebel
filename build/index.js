@@ -126,7 +126,8 @@ const ContentPanel = ({
   const {
     title,
     titleColor,
-    items
+    items,
+    params
   } = attributes;
 
   // Подключаем общий хук
