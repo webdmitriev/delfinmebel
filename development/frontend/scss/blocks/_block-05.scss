@@ -16,10 +16,11 @@
     .slider-product {
       scroll-snap-align: start;
       scroll-snap-stop: always;
+      position: relative;
       flex: 0 0 310px;
       display: block;
       width: 310px;
-      padding: 8px 8px 12px 8px;
+      padding: 8px 8px 58px 8px;
       background-color: var(--bg-block);
       border-radius: 10px;
       transition: all 0.4s ease;
@@ -45,13 +46,15 @@
         color: var(--black-color);
       }
       .slider-product__descr {
-        margin-bottom: 12px;
         font-weight: 400;
         font-size: 18px;
         line-height: var(--font-height);
         color: var(--black-color);
       }
       .slider-product__price {
+        position: absolute;
+        bottom: 12px;
+        left: 18px;
         gap: 16px;
         max-width: calc(100% - 20px);
         margin-inline: auto;

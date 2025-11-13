@@ -11,12 +11,6 @@ registerBlockType('theme/block-05', {
   attributes,
   edit,
   save,
-  example: {
-    attributes: {
-      title: 'Превью заголовка',
-      subTitleOne: 'Превью подзаголовка',
-    },
-  },
 });
 
 console.log('✅ block-05');

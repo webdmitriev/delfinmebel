@@ -1,22 +1,28 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 const Save = ({ attributes }) => {
   const { title } = attributes;
 
   const blockProps = useBlockProps.save({
-    className: `block-05`,
+    className: 'block-05'
   });
 
   return (
     <div {...blockProps}>
-      <div class="container">
-        {title &&
+      <div className="container">
+        {title && (
           <RichText.Content
             tagName="h2"
+            className="popular-products-title"
             value={title}
-            className="h2"
           />
-        }
+        )}
+
+        <div
+          className="popular-products-container"
+          data-popular-products="true"
+        />
       </div>
     </div>
   );

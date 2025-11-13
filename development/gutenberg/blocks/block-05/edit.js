@@ -1,5 +1,5 @@
 import { useState } from '@wordpress/element';
-import { useBlockProps, RichText, InspectorControls, MediaUpload } from '@wordpress/block-editor';
+import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
 import { RadioControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -11,7 +11,7 @@ import ContentPanel from './controls/ContentPanel';
 const Edit = ({ attributes, setAttributes }) => {
   const { title } = attributes;
 
-  const [viewMode, setViewMode] = useState('edit'); // 'preview' | 'edit'
+  const [viewMode, setViewMode] = useState('edit');
 
   const blockProps = useBlockProps({
     className: 'development block-05'

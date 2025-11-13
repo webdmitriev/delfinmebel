@@ -158,40 +158,40 @@ add_action('admin_enqueue_scripts', 'store_category_admin_scripts');
 
 // === Регистрируем метаполя для store ===
 function register_store_meta_fields() {
-    register_post_meta('store', 'articulate', [
-        'type' => 'string',
-        'single' => true,
-        'sanitize_callback' => 'sanitize_text_field',
-        'show_in_rest' => false, // <-- отключаем REST
-    ]);
+  register_post_meta('store', 'articulate', [
+    'type' => 'string',
+    'single' => true,
+    'sanitize_callback' => 'sanitize_text_field',
+    'show_in_rest' => false, // <-- отключаем REST
+  ]);
 
-    register_post_meta('store', 'price_new', [
-        'type' => 'number',
-        'single' => true,
-        'sanitize_callback' => 'floatval',
-        'show_in_rest' => false,
-    ]);
+  register_post_meta('store', 'price_new', [
+    'type' => 'number',
+    'single' => true,
+    'sanitize_callback' => 'floatval',
+    'show_in_rest' => false,
+  ]);
 
-    register_post_meta('store', 'price_old', [
-        'type' => 'number',
-        'single' => true,
-        'sanitize_callback' => 'floatval',
-        'show_in_rest' => false,
-    ]);
+  register_post_meta('store', 'price_old', [
+    'type' => 'number',
+    'single' => true,
+    'sanitize_callback' => 'floatval',
+    'show_in_rest' => false,
+  ]);
 
-    register_post_meta('store', 'custom_excerpt', [
-        'type' => 'string',
-        'single' => true,
-        'sanitize_callback' => 'sanitize_textarea_field',
-        'show_in_rest' => false,
-    ]);
+  register_post_meta('store', 'custom_excerpt', [
+    'type' => 'string',
+    'single' => true,
+    'sanitize_callback' => 'sanitize_textarea_field',
+    'show_in_rest' => false,
+  ]);
 
-    register_post_meta('store', 'is_popular', [
-        'type' => 'boolean',
-        'single' => true,
-        'sanitize_callback' => 'rest_sanitize_boolean',
-        'show_in_rest' => false,
-    ]);
+  register_post_meta('store', 'is_popular', [
+    'type' => 'boolean',
+    'single' => true,
+    'sanitize_callback' => 'rest_sanitize_boolean',
+    'show_in_rest' => false,
+  ]);
 }
 
 
@@ -332,3 +332,77 @@ function store_popular_orderby($query) {
     }
 }
 add_action('pre_get_posts', 'store_popular_orderby');
+
+
+// Обработка вывода блока на фронтенде
+function render_popular_products_block($attributes, $content) {
+    $title = $attributes['title'] ?? '';
+    
+    // Получаем популярные товары
+    $args = array(
+        'post_type' => 'store',
+        'posts_per_page' => 20,
+        'meta_query' => array(
+            array(
+                'key' => 'is_popular',
+                'value' => '1',
+                'compare' => '='
+            )
+        )
+    );
+    
+    $popular_products = new WP_Query($args);
+    
+    ob_start();
+    ?>
+    
+    <div class="block-05">
+        <div class="container">
+            <?php if ($title) : ?><h2 class="h2"><?php echo esc_html($title); ?></h2><?php endif; ?>
+            
+            <?php if ($popular_products->have_posts()) : ?>
+                <div class="slider-products">
+                    <?php while ($popular_products->have_posts()) : $popular_products->the_post();
+
+                      $product_id = get_the_ID();
+                      $excerpt = get_post_meta($product_id, 'custom_excerpt', true);
+                      $price_new = get_post_meta($product_id, 'price_new', true);
+                      $price_old = get_post_meta($product_id, 'price_old', true);
+                    ?>
+                        <a href="<?php the_permalink(); ?>" class="slider-product slide">
+                            <?php if (has_post_thumbnail()) : ?>
+                              <?php
+                              the_post_thumbnail('medium', [
+                                'class' => 'slider-product__image',
+                                'alt' => get_the_title(),
+                                'loading' => 'lazy'
+                              ]);
+                              ?>
+                            <?php endif; ?>
+                            <p class="slider-product__title"><?php the_title(); ?></p>
+                            <?php if($excerpt): ?><p class="slider-product__descr"><?php echo esc_html($excerpt); ?></p><?php endif; ?>
+                            <div class="slider-product__price df-fs-fe w-100p">
+                                <?php if($price_new): ?><span class="price-new"><?php echo esc_html(number_format_i18n($price_new, 0)); ?></span><?php endif; ?>
+                                <?php if($price_old): ?><span class="price-old"><?php echo esc_html(number_format_i18n($price_old, 0)); ?></span><?php endif; ?>
+                            </div>
+                        </a>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                </div>
+            <?php else : ?>
+                <p class="no-products"><?php esc_html_e('Популярные товары появятся скоро!', 'theme'); ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+    <?php
+    return ob_get_clean();
+}
+
+// Регистрируем рендер блока
+function register_popular_products_block() {
+    register_block_type('theme/block-05', array(
+        'render_callback' => 'render_popular_products_block'
+    ));
+}
+add_action('init', 'register_popular_products_block');
