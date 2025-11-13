@@ -114,6 +114,7 @@ const ContentPanel = ({
 }) => {
   const {
     title,
+    titleColor,
     items
   } = attributes;
 
@@ -121,8 +122,8 @@ const ContentPanel = ({
   const {
     typographField,
     typographAllFields
-  } = (0,_utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__.useTypograf)(attributes, setAttributes, ['title', 'items[].content']);
-  const hasTextToTypograph = title || items.some(item => item.content && item.content.trim() !== '');
+  } = (0,_utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__.useTypograf)(attributes, setAttributes, ['title', 'titleColor', 'items[].content', 'params[].content']);
+  const hasTextToTypograph = title || titleColor || items.some(item => item.content && item.content.trim() !== '') || params.some(item => item.content && item.content.trim() !== '');
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типограф', 'theme'),
     initialOpen: false
@@ -661,79 +662,13 @@ const attributes = {
   },
   selectedCategories: {
     type: 'array',
-    default: []
+    default: [],
+    items: {
+      type: 'object'
+    }
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
-
-/***/ }),
-
-/***/ "./development/gutenberg/blocks/block-04/controls/ContentPanel.js":
-/*!************************************************************************!*\
-  !*** ./development/gutenberg/blocks/block-04/controls/ContentPanel.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/useTypograf */ "./development/gutenberg/utils/useTypograf.js");
-
-
-
-
-const ContentPanel = ({
-  attributes,
-  setAttributes
-}) => {
-  const {
-    title
-  } = attributes;
-
-  // Подключаем общий хук
-  const {
-    typographField,
-    typographAllFields
-  } = (0,_utils_useTypograf__WEBPACK_IMPORTED_MODULE_3__.useTypograf)(attributes, setAttributes, ['title']);
-  const hasTextToTypograph = title;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типограф', 'theme'),
-    initialOpen: false
-  }, hasTextToTypograph && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      marginBottom: '20px',
-      padding: '10px',
-      background: '#f6f7f7',
-      borderRadius: '4px'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Flex, {
-    direction: "column",
-    gap: "10px"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-    variant: "primary",
-    onClick: typographAllFields,
-    style: {
-      display: 'block',
-      width: '100%',
-      textAlign: 'center'
-    }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Типографировать все поля', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      fontSize: '12px',
-      color: '#757575',
-      textAlign: 'center'
-    }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Расставит кавычки, тире и неразрывные пробелы', 'theme')))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContentPanel);
 
 /***/ }),
 
@@ -820,8 +755,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _admin_assets_img_blocks_block_04_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/block-04.jpg */ "./admin/assets/img/blocks/block-04.jpg");
 /* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/block-04/controls/VideoHelpPanel.js");
-/* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/block-04/controls/ContentPanel.js");
-
 
 
 
@@ -834,14 +767,13 @@ const Edit = ({
   setAttributes
 }) => {
   const {
-    title,
-    selectedCategories
+    selectedCategories = []
   } = attributes;
   const [viewMode, setViewMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('edit');
   const [categories, setCategories] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
 
-  // Загрузка всех категорий
+  // --- Загрузка категорий ---
   const loadAllCategories = async () => {
     setIsLoading(true);
     try {
@@ -863,102 +795,65 @@ const Edit = ({
       setIsLoading(false);
     }
   };
-
-  // Эффект для очистки удаленных категорий при изменении categories
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    if (categories.length > 0 && selectedCategories.length > 0) {
-      cleanupDeletedCategories();
-    }
-  }, [categories]); // Запускаем когда categories обновляются
-
-  // Очистка удаленных категорий из selectedCategories
-  const cleanupDeletedCategories = () => {
-    const existingCategoryIds = categories.map(cat => cat.id);
-    const validSelectedCategories = selectedCategories.filter(id => existingCategoryIds.includes(id));
-
-    // Если есть невалидные категории, обновляем атрибуты
-    if (validSelectedCategories.length !== selectedCategories.length) {
-      console.log('Очистка: было', selectedCategories.length, 'стало', validSelectedCategories.length);
-      setAttributes({
-        selectedCategories: validSelectedCategories
-      });
-    }
-  };
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     loadAllCategories();
   }, []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (!isLoading && categories.length > 0 && selectedCategories.length > 0) {
+      const existingIds = categories.map(cat => cat.id);
+      const validSelected = selectedCategories.filter(cat => existingIds.includes(cat.id));
+      if (validSelected.length !== selectedCategories.length) {
+        console.log('🧹 Очистка: удалено', selectedCategories.length - validSelected.length, 'категорий');
+        setAttributes({
+          selectedCategories: validSelected
+        });
+      }
+    }
+  }, [isLoading, categories]);
+
+  // --- Выбор / снятие категории ---
   const toggleCategory = catId => {
-    if (selectedCategories.includes(catId)) {
+    const cat = categories.find(c => c.id === catId);
+    if (!cat) return;
+    const exists = selectedCategories.some(c => c.id === cat.id);
+    if (exists) {
       setAttributes({
-        selectedCategories: selectedCategories.filter(id => id !== catId)
+        selectedCategories: selectedCategories.filter(c => c.id !== cat.id)
       });
     } else {
+      const catData = {
+        id: cat.id,
+        name: cat.name,
+        description: cat.description,
+        image: cat.image ? {
+          url: cat.image.url
+        } : null,
+        link: cat.link || (cat.slug ? `/store/${cat.slug}` : '')
+      };
       setAttributes({
-        selectedCategories: [...selectedCategories, catId]
+        selectedCategories: [...selectedCategories, catData]
       });
     }
   };
-
-  // Функция для ручной очистки несуществующих категорий
-  const handleCleanup = () => {
-    const existingCategoryIds = categories.map(cat => cat.id);
-    const validSelectedCategories = selectedCategories.filter(id => existingCategoryIds.includes(id));
-    setAttributes({
-      selectedCategories: validSelectedCategories
-    });
-  };
-
-  // Получаем только существующие выбранные категории
-  const existingSelectedCategories = selectedCategories.filter(id => categories.some(cat => cat.id === id));
-
-  // Получаем несуществующие выбранные категории
-  const deletedCategories = selectedCategories.filter(id => !categories.some(cat => cat.id === id));
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: 'development block-04'
   });
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_ContentPanel__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    attributes: attributes,
-    setAttributes: setAttributes
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__["default"], null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Категории магазина', 'theme'),
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
-      padding: '16px 8px',
       maxHeight: '400px',
       overflowY: 'auto'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выберите категории', 'theme')), deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      background: '#fff3cd',
-      border: '1px solid #ffeaa7',
-      borderRadius: '4px',
-      padding: '12px',
-      marginBottom: '16px'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      margin: '0 0 8px 0',
-      fontWeight: 'bold',
-      color: '#856404'
-    }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Найдены удаленные категории', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      margin: '0 0 12px 0',
-      fontSize: '12px',
-      color: '#856404'
-    }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Некоторые выбранные категории были удалены из системы', 'theme')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-    variant: "secondary",
-    onClick: handleCleanup,
-    style: {
-      fontSize: '12px'
-    }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Очистить несуществующие категории', 'theme'))), isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, isLoading ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       textAlign: 'center'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Spinner, null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загрузка категорий...', 'theme'))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, categories.map(cat => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
     key: cat.id,
     label: cat.name,
-    checked: selectedCategories.includes(cat.id),
+    checked: selectedCategories.some(c => c.id === cat.id),
     onChange: () => toggleCategory(cat.id)
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
@@ -966,25 +861,15 @@ const Edit = ({
       fontSize: '12px',
       color: '#666'
     }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Загружено категорий:', 'theme'), " ", categories.length, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выбрано категорий:', 'theme'), " ", existingSelectedCategories.length, deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    style: {
-      color: '#dc3545'
-    }
-  }, ' ', "(+", deletedCategories.length, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('удаленных', 'theme'), ")"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Выбрано категорий:', 'theme'), " ", selectedCategories.length))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-block"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "block-info",
-    style: {
-      display: "flex",
-      flexWrap: "wrap",
-      alignItems: "center",
-      justifyContent: "space-between"
-    }
+    className: "block-info"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "block-info-title"
-  }, "\uD83C\uDFA8 \u0413\u043B\u0430\u0432\u043D\u044B\u0439 \u0431\u043B\u043E\u043A"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
+  }, "\uD83C\uDFA8 \u0411\u043B\u043E\u043A \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0439"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RadioControl, {
     selected: viewMode,
     options: [{
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Preview ✍️', 'theme'),
@@ -1002,77 +887,29 @@ const Edit = ({
       borderRadius: '8px'
     }
   }), viewMode === 'edit' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "advanced-block-content"
-  }, deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      background: '#fff3cd',
-      border: '1px solid #ffeaa7',
-      borderRadius: '4px',
-      padding: '12px',
-      marginBottom: '16px'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      margin: '0',
-      color: '#856404'
-    }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('⚠️ Некоторые выбранные категории были удалены', 'theme'))), existingSelectedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "selected-categories"
-  }, existingSelectedCategories.map(id => {
-    const cat = categories.find(c => c.id === id);
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      key: id,
-      style: {
-        marginBottom: '8px',
-        padding: '8px',
-        border: '1px solid #e0e0e0',
-        borderRadius: '4px'
-      },
-      className: "selected-category"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        fontWeight: 'bold'
-      }
-    }, cat?.name), cat?.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        fontSize: '12px',
-        color: '#666',
-        marginTop: '4px'
-      }
-    }, cat.description), cat?.image && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: cat.image.url,
-      alt: "",
-      style: {
-        width: '80px',
-        height: '80px',
-        objectFit: 'cover',
-        marginTop: '8px',
-        borderRadius: '4px'
-      }
-    }));
-  })), deletedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "deleted-categories",
+  }, selectedCategories.length > 0 ? selectedCategories.map(cat => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: cat.id,
+    className: "selected-category"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "category-name"
+  }, cat.name), cat.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "category-description"
+  }, cat.description), cat.image?.url && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: cat.image.url,
+    alt: cat.name,
     style: {
-      marginTop: '16px'
+      width: '80px',
+      height: '80px',
+      objectFit: 'cover',
+      marginTop: '8px',
+      borderRadius: '4px'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+  }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     style: {
-      marginBottom: '12px',
-      color: '#dc3545',
-      fontSize: '14px'
+      color: '#888'
     }
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Удаленные категории (будут автоматически удалены):', 'theme')), deletedCategories.map(id => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    key: id,
-    style: {
-      marginBottom: '4px',
-      padding: '4px 8px',
-      background: '#f8d7da',
-      border: '1px solid #f5c6cb',
-      borderRadius: '4px',
-      fontSize: '12px',
-      color: '#721c24'
-    }
-  }, "ID: ", id, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('(категория удалена)', 'theme'))))))));
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Нет выбранных категорий', 'theme'))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -1096,7 +933,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('theme/block-04', {
-  title: 'Каталог мебели',
+  title: 'Блок категорий',
   category: 'landing',
   icon: 'admin-customizer',
   description: ' ',
@@ -1123,7 +960,7 @@ console.log('✅ block-02 open');
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -1131,26 +968,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const Save = ({
+function save({
   attributes
-}) => {
+}) {
   const {
-    title
+    selectedCategories
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: `block-04`
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "container"
-  }, title && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "h2",
-    value: title,
-    className: "h2"
-  })));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
+  }, selectedCategories && selectedCategories.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "container"
+  }, selectedCategories.map((cat, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    key: index,
+    href: cat.link,
+    class: "block-category"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    class: "block-category__name"
+  }, cat.name), cat.description && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    class: "block-category__descr"
+  }, cat.description), cat.image?.url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: cat.image.url,
+    alt: cat.name,
+    className: "block-category__image"
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAUAAAIFjI+puwUAOw==",
+    alt: cat.name,
+    className: "block-category__image"
+  })))));
+}
 
 /***/ }),
 

@@ -4,7 +4,7 @@ import save from './save';
 import attributes from './attributes';
 
 registerBlockType('theme/block-04', {
-  title: 'Каталог мебели',
+  title: 'Блок категорий',
   category: 'landing',
   icon: 'admin-customizer',
   description: ' ',

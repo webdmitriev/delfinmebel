@@ -3,15 +3,17 @@ import { __ } from '@wordpress/i18n';
 import { useTypograf } from '../../../utils/useTypograf';
 
 const ContentPanel = ({ attributes, setAttributes }) => {
-  const { title, items } = attributes;
+  const { title, titleColor, items } = attributes;
 
   // Подключаем общий хук
   const { typographField, typographAllFields } = useTypograf(attributes, setAttributes, [
     'title',
-    'items[].content'
+    'titleColor',
+    'items[].content',
+    'params[].content',
   ]);
 
-  const hasTextToTypograph = title || items.some(item => item.content && item.content.trim() !== '');
+  const hasTextToTypograph = title || titleColor || items.some(item => item.content && item.content.trim() !== '') || params.some(item => item.content && item.content.trim() !== '');
 
   return (
     <PanelBody title={__('Типограф', 'theme')} initialOpen={false}>

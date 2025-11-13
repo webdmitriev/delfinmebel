@@ -1,26 +1,21 @@
 import { useState, useEffect } from '@wordpress/element';
-import { useBlockProps, RichText, InspectorControls, MediaUpload } from '@wordpress/block-editor';
-import { CheckboxControl, RadioControl, Spinner, Button } from '@wordpress/components';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { CheckboxControl, RadioControl, Spinner, PanelBody } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 import mainBlockImg from '../../../../admin/assets/img/blocks/block-04.jpg';
-
 import VideoHelpPanel from './controls/VideoHelpPanel';
-import ContentPanel from './controls/ContentPanel';
 
 const Edit = ({ attributes, setAttributes }) => {
-  const {
-    title, selectedCategories
-  } = attributes;
+  const { selectedCategories = [] } = attributes;
 
   const [viewMode, setViewMode] = useState('edit');
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Загрузка всех категорий
+  // --- Загрузка категорий ---
   const loadAllCategories = async () => {
     setIsLoading(true);
-
     try {
       let allCategories = [];
       let page = 1;
@@ -47,139 +42,92 @@ const Edit = ({ attributes, setAttributes }) => {
     }
   };
 
-  // Эффект для очистки удаленных категорий при изменении categories
-  useEffect(() => {
-    if (categories.length > 0 && selectedCategories.length > 0) {
-      cleanupDeletedCategories();
-    }
-  }, [categories]); // Запускаем когда categories обновляются
-
-  // Очистка удаленных категорий из selectedCategories
-  const cleanupDeletedCategories = () => {
-    const existingCategoryIds = categories.map(cat => cat.id);
-    const validSelectedCategories = selectedCategories.filter(id =>
-      existingCategoryIds.includes(id)
-    );
-
-    // Если есть невалидные категории, обновляем атрибуты
-    if (validSelectedCategories.length !== selectedCategories.length) {
-      console.log('Очистка: было', selectedCategories.length, 'стало', validSelectedCategories.length);
-      setAttributes({
-        selectedCategories: validSelectedCategories
-      });
-    }
-  };
-
   useEffect(() => {
     loadAllCategories();
   }, []);
 
+  useEffect(() => {
+    if (!isLoading && categories.length > 0 && selectedCategories.length > 0) {
+      const existingIds = categories.map((cat) => cat.id);
+      const validSelected = selectedCategories.filter((cat) =>
+        existingIds.includes(cat.id)
+      );
+
+      if (validSelected.length !== selectedCategories.length) {
+        console.log(
+          '🧹 Очистка: удалено',
+          selectedCategories.length - validSelected.length,
+          'категорий'
+        );
+        setAttributes({ selectedCategories: validSelected });
+      }
+    }
+  }, [isLoading, categories]);
+
+  // --- Выбор / снятие категории ---
   const toggleCategory = (catId) => {
-    if (selectedCategories.includes(catId)) {
+    const cat = categories.find((c) => c.id === catId);
+    if (!cat) return;
+
+    const exists = selectedCategories.some((c) => c.id === cat.id);
+
+    if (exists) {
       setAttributes({
-        selectedCategories: selectedCategories.filter(id => id !== catId),
+        selectedCategories: selectedCategories.filter((c) => c.id !== cat.id),
       });
     } else {
+      const catData = {
+        id: cat.id,
+        name: cat.name,
+        description: cat.description,
+        image: cat.image ? { url: cat.image.url } : null,
+        link: cat.link || (cat.slug ? `/store/${cat.slug}` : ''),
+      };
+
       setAttributes({
-        selectedCategories: [...selectedCategories, catId],
+        selectedCategories: [...selectedCategories, catData],
       });
     }
   };
 
-  // Функция для ручной очистки несуществующих категорий
-  const handleCleanup = () => {
-    const existingCategoryIds = categories.map(cat => cat.id);
-    const validSelectedCategories = selectedCategories.filter(id =>
-      existingCategoryIds.includes(id)
-    );
-
-    setAttributes({
-      selectedCategories: validSelectedCategories
-    });
-  };
-
-  // Получаем только существующие выбранные категории
-  const existingSelectedCategories = selectedCategories.filter(id =>
-    categories.some(cat => cat.id === id)
-  );
-
-  // Получаем несуществующие выбранные категории
-  const deletedCategories = selectedCategories.filter(id =>
-    !categories.some(cat => cat.id === id)
-  );
-
   const blockProps = useBlockProps({
-    className: 'development block-04'
+    className: 'development block-04',
   });
 
   return (
     <>
       <InspectorControls>
         <VideoHelpPanel />
-        <ContentPanel attributes={attributes} setAttributes={setAttributes} />
-        <div style={{ padding: '16px 8px', maxHeight: '400px', overflowY: 'auto' }}>
-          <p>{__('Выберите категории', 'theme')}</p>
-
-          {/* Показываем предупреждение о несуществующих категориях */}
-          {deletedCategories.length > 0 && (
-            <div style={{
-              background: '#fff3cd',
-              border: '1px solid #ffeaa7',
-              borderRadius: '4px',
-              padding: '12px',
-              marginBottom: '16px'
-            }}>
-              <p style={{ margin: '0 0 8px 0', fontWeight: 'bold', color: '#856404' }}>
-                {__('Найдены удаленные категории', 'theme')}
-              </p>
-              <p style={{ margin: '0 0 12px 0', fontSize: '12px', color: '#856404' }}>
-                {__('Некоторые выбранные категории были удалены из системы', 'theme')}
-              </p>
-              <Button
-                variant="secondary"
-                onClick={handleCleanup}
-                style={{ fontSize: '12px' }}
-              >
-                {__('Очистить несуществующие категории', 'theme')}
-              </Button>
-            </div>
-          )}
-
-          {isLoading ? (
-            <div style={{ textAlign: 'center' }}>
-              <Spinner />
-              <p>{__('Загрузка категорий...', 'theme')}</p>
-            </div>
-          ) : (
-            <>
-              {categories.map(cat => (
-                <CheckboxControl
-                  key={cat.id}
-                  label={cat.name}
-                  checked={selectedCategories.includes(cat.id)}
-                  onChange={() => toggleCategory(cat.id)}
-                />
-              ))}
-
-              <div style={{ marginTop: '16px', fontSize: '12px', color: '#666' }}>
-                {__('Загружено категорий:', 'theme')} {categories.length}
-                <br />
-                {__('Выбрано категорий:', 'theme')} {existingSelectedCategories.length}
-                {deletedCategories.length > 0 && (
-                  <span style={{ color: '#dc3545' }}>
-                    {' '}(+{deletedCategories.length} {__('удаленных', 'theme')})
-                  </span>
-                )}
+        <PanelBody title={__('Категории магазина', 'theme')} initialOpen={true}>
+          <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+            {isLoading ? (
+              <div style={{ textAlign: 'center' }}>
+                <Spinner />
+                <p>{__('Загрузка категорий...', 'theme')}</p>
               </div>
-            </>
-          )}
-        </div>
+            ) : (
+              <>
+                {categories.map((cat) => (
+                  <CheckboxControl
+                    key={cat.id}
+                    label={cat.name}
+                    checked={selectedCategories.some((c) => c.id === cat.id)}
+                    onChange={() => toggleCategory(cat.id)}
+                  />
+                ))}
+                <div style={{ marginTop: '16px', fontSize: '12px', color: '#666' }}>
+                  {__('Выбрано категорий:', 'theme')} {selectedCategories.length}
+                </div>
+              </>
+            )}
+          </div>
+        </PanelBody>
       </InspectorControls>
 
       <div {...blockProps}>
         <div className="advanced-block">
-          <div className="block-info" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
-            <span className="block-info-title">🎨 Главный блок</span>
+          <div className="block-info">
+            <span className="block-info-title">🎨 Блок категорий</span>
             <RadioControl
               selected={viewMode}
               options={[
@@ -200,82 +148,31 @@ const Edit = ({ attributes, setAttributes }) => {
           )}
 
           {viewMode === 'edit' && (
-            <div className="advanced-block-content">
-              {/* Показываем предупреждение в режиме редактирования */}
-              {deletedCategories.length > 0 && (
-                <div style={{
-                  background: '#fff3cd',
-                  border: '1px solid #ffeaa7',
-                  borderRadius: '4px',
-                  padding: '12px',
-                  marginBottom: '16px'
-                }}>
-                  <p style={{ margin: '0', color: '#856404' }}>
-                    {__('⚠️ Некоторые выбранные категории были удалены', 'theme')}
-                  </p>
-                </div>
-              )}
-
-              {existingSelectedCategories.length > 0 && (
-                <div className="selected-categories">
-                  {existingSelectedCategories.map(id => {
-                    const cat = categories.find(c => c.id === id);
-                    return (
-                      <div key={id} style={{
-                        marginBottom: '8px',
-                        padding: '8px',
-                        border: '1px solid #e0e0e0',
-                        borderRadius: '4px'
-                      }} className="selected-category">
-                        <div style={{ fontWeight: 'bold' }}>{cat?.name}</div>
-                        {cat?.description && (
-                          <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
-                            {cat.description}
-                          </div>
-                        )}
-                        {cat?.image && (
-                          <img
-                            src={cat.image.url}
-                            alt=""
-                            style={{
-                              width: '80px',
-                              height: '80px',
-                              objectFit: 'cover',
-                              marginTop: '8px',
-                              borderRadius: '4px'
-                            }}
-                          />
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* Показываем удаленные категории отдельно */}
-              {deletedCategories.length > 0 && (
-                <div className="deleted-categories" style={{ marginTop: '16px' }}>
-                  <h4 style={{
-                    marginBottom: '12px',
-                    color: '#dc3545',
-                    fontSize: '14px'
-                  }}>
-                    {__('Удаленные категории (будут автоматически удалены):', 'theme')}
-                  </h4>
-                  {deletedCategories.map(id => (
-                    <div key={id} style={{
-                      marginBottom: '4px',
-                      padding: '4px 8px',
-                      background: '#f8d7da',
-                      border: '1px solid #f5c6cb',
-                      borderRadius: '4px',
-                      fontSize: '12px',
-                      color: '#721c24'
-                    }}>
-                      ID: {id} {__('(категория удалена)', 'theme')}
-                    </div>
-                  ))}
-                </div>
+            <div className="selected-categories">
+              {selectedCategories.length > 0 ? (
+                selectedCategories.map((cat) => (
+                  <div key={cat.id} className="selected-category">
+                    <div className="category-name">{cat.name}</div>
+                    {cat.description && (
+                      <div className="category-description">{cat.description}</div>
+                    )}
+                    {cat.image?.url && (
+                      <img
+                        src={cat.image.url}
+                        alt={cat.name}
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          objectFit: 'cover',
+                          marginTop: '8px',
+                          borderRadius: '4px',
+                        }}
+                      />
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p style={{ color: '#888' }}>{__('Нет выбранных категорий', 'theme')}</p>
               )}
             </div>
           )}
