@@ -185,6 +185,13 @@ function register_store_meta_fields() {
         'sanitize_callback' => 'sanitize_textarea_field',
         'show_in_rest' => false,
     ]);
+
+    register_post_meta('store', 'is_popular', [
+        'type' => 'boolean',
+        'single' => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+        'show_in_rest' => false,
+    ]);
 }
 
 
@@ -208,6 +215,7 @@ function render_store_meta_box($post) {
     $price_new  = get_post_meta($post->ID, 'price_new', true);
     $price_old  = get_post_meta($post->ID, 'price_old', true);
     $excerpt    = get_post_meta($post->ID, 'custom_excerpt', true);
+    $is_popular = get_post_meta($post->ID, 'is_popular', true);
     ?>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
         <div>
@@ -222,6 +230,12 @@ function render_store_meta_box($post) {
             <p>
                 <label for="price_old"><strong>Старая цена:</strong></label><br>
                 <input type="number" name="price_old" id="price_old" min="0" step="0.01" value="<?php echo esc_attr($price_old); ?>" style="width:100%;">
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="is_popular" value="1" <?php checked($is_popular, 1); ?>>
+                    <strong>Популярный товар</strong>
+                </label>
             </p>
         </div>
         <div>
@@ -266,7 +280,55 @@ function save_store_meta_fields($post_id) {
     if (isset($_POST['custom_excerpt'])) {
         update_post_meta($post_id, 'custom_excerpt', sanitize_textarea_field($_POST['custom_excerpt']));
     }
+
+    $is_popular = isset($_POST['is_popular']) ? 1 : 0;
+    update_post_meta($post_id, 'is_popular', $is_popular);
 }
 // Привязываем к save_post
 add_action('save_post', 'save_store_meta_fields');
 
+// === Добавляем колонку "Популярный" в список товаров ===
+function store_add_popular_column($columns) {
+    // Вставляем новую колонку после заголовка
+    $new_columns = [];
+    foreach ($columns as $key => $label) {
+        $new_columns[$key] = $label;
+        if ($key === 'title') {
+            $new_columns['is_popular'] = 'Популярный';
+        }
+    }
+    return $new_columns;
+}
+add_filter('manage_store_posts_columns', 'store_add_popular_column');
+
+// === Заполняем колонку значением ===
+function store_render_popular_column($column, $post_id) {
+    if ($column === 'is_popular') {
+        $is_popular = get_post_meta($post_id, 'is_popular', true);
+        if ($is_popular) {
+            echo '<span style="color:green;font-weight:bold;">✔</span>';
+        } else {
+            echo '<span style="color:#aaa;">—</span>';
+        }
+    }
+}
+add_action('manage_store_posts_custom_column', 'store_render_popular_column', 10, 2);
+
+// === Делаем колонку сортируемой ===
+function store_make_popular_sortable($columns) {
+    $columns['is_popular'] = 'is_popular';
+    return $columns;
+}
+add_filter('manage_edit-store_sortable_columns', 'store_make_popular_sortable');
+
+// === Реализуем сортировку по колонке ===
+function store_popular_orderby($query) {
+    if (!is_admin() || !$query->is_main_query()) return;
+
+    $orderby = $query->get('orderby');
+    if ('is_popular' === $orderby) {
+        $query->set('meta_key', 'is_popular');
+        $query->set('orderby', 'meta_value_num');
+    }
+}
+add_action('pre_get_posts', 'store_popular_orderby');

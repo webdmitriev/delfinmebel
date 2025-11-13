@@ -3,7 +3,7 @@ import { useBlockProps, RichText, InspectorControls, MediaUpload } from '@wordpr
 import { RadioControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import mainBlockImg from '../../../../admin/assets/img/blocks/block-03.jpg';
+import mainBlockImg from '../../../../admin/assets/img/blocks/block-05.jpg';
 
 import VideoHelpPanel from './controls/VideoHelpPanel';
 import ContentPanel from './controls/ContentPanel';
@@ -27,7 +27,7 @@ const Edit = ({ attributes, setAttributes }) => {
       <div {...blockProps}>
         <div className="advanced-block">
           <div className="block-info">
-            <span className="block-info-title">🎨 Блок: Популярные фотографии</span>
+            <span className="block-info-title">🎨 Популярные товары</span>
             <RadioControl
               selected={viewMode}
               options={[

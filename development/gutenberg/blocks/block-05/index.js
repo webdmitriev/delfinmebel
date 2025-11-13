@@ -4,7 +4,7 @@ import save from './save';
 import attributes from './attributes';
 
 registerBlockType('theme/block-05', {
-  title: 'Блок: Популярные фотографии',
+  title: 'Популярные товары',
   category: 'landing',
   icon: 'admin-customizer',
   description: ' ',
