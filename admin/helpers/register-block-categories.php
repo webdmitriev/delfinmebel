@@ -47,6 +47,7 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
     'theme/block-04',
     'theme/block-05',
     'theme/block-07',
+    'theme/block-08',
 
     // стандартные блоки
     'core/paragraph',
