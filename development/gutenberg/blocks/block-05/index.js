@@ -3,8 +3,8 @@ import edit from './edit';
 import save from './save';
 import attributes from './attributes';
 
-registerBlockType('theme/block-04', {
-  title: 'Блок категорий',
+registerBlockType('theme/block-05', {
+  title: 'Блок: Популярные фотографии',
   category: 'landing',
   icon: 'admin-customizer',
   description: ' ',
@@ -19,4 +19,4 @@ registerBlockType('theme/block-04', {
   },
 });
 
-console.log('✅ block-04 open');
+console.log('✅ block-05');

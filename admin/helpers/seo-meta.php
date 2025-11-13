@@ -15,15 +15,20 @@ function theme_register_seo_meta_fields() {
     '_twitter_image',
   ];
 
-  foreach ($fields as $field) {
-    register_post_meta('', $field, [
-      'show_in_rest' => true,
-      'single' => true,
-      'type' => 'string',
-      'auth_callback' => function() {
-        return current_user_can('edit_posts');
-      },
-    ]);
+  // Явно указываем поддерживаемые post_types
+  $post_types = ['post', 'page', 'store'];
+
+  foreach ($post_types as $post_type) {
+    foreach ($fields as $field) {
+      register_post_meta($post_type, $field, [
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+        'auth_callback' => function() {
+          return current_user_can('edit_posts');
+        },
+      ]);
+    }
   }
 }
 add_action('init', 'theme_register_seo_meta_fields');

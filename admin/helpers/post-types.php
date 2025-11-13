@@ -37,7 +37,8 @@ function register_store_post_type() {
     'hierarchical'       => false,
     'menu_position'      => 5,
     'menu_icon'          => 'dashicons-id', // Иконка меню в админке
-    'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+    'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+    'template_lock'      => false,
   );
 
   register_post_type('store', $args);

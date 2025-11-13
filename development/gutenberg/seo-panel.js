@@ -6,6 +6,18 @@ import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
 
 const SeoTab = () => {
+  const postType = useSelect(
+    (select) => select('core/editor').getCurrentPostType(),
+    []
+  );
+
+  // Проверяем, поддерживается ли текущий post_type
+  const supportedPostTypes = ['post', 'page', 'store'];
+
+  if (!supportedPostTypes.includes(postType)) {
+    return null;
+  }
+
   const meta = useSelect(
     (select) => select('core/editor').getEditedPostAttribute('meta'),
     []
@@ -80,8 +92,11 @@ const SeoTab = () => {
 
   return (
     <>
-      <PluginSidebarMoreMenuItem target="seo-sidebar">
-        СЕО
+      <PluginSidebarMoreMenuItem
+        target="seo-sidebar"
+        icon="admin-site"
+      >
+        SEO Настройки
       </PluginSidebarMoreMenuItem>
 
       <PluginSidebar
@@ -101,6 +116,13 @@ const SeoTab = () => {
             value={meta._seo_keywords || ''}
             onChange={(value) => updateMeta('_seo_keywords', value)}
             help="Ключевые слова через запятую"
+          />
+
+          <TextControl
+            label="Canonical URL"
+            value={meta._seo_canonical_url || ''}
+            onChange={(value) => updateMeta('_seo_canonical_url', value)}
+            help="Канонический URL (если отличается от текущего)"
           />
 
           {/* Open Graph */}
