@@ -76,13 +76,17 @@
       display: block;
       width: 100%;
     }
-    .block-label {
+    .block-label,
+    .advanced-block-image__title {
       display: block;
       width: 100%;
       font-family: "Montserrat", sans-serif;
       font-size: 13px;
       line-height: 1.4;
       color: rgba(0, 0, 0, 0.7);
+    }
+    .advanced-block-image__title {
+      margin-bottom: 8px;
     }
     [role="textbox"],
     textarea {
@@ -283,6 +287,33 @@
       padding: 18px;
       background-color: rgba(0, 124, 186, 0.25);
       border-radius: 8px;
+    }
+    .rich-text-block {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background-color: rgba(0, 124, 186, 0.25);
+      border-radius: 8px;
+    }
+    .block-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+      .advanced-block-image {
+        display: block;
+        width: 100%;
+        max-width: 240px;
+        border-radius: 8px;
+        img {
+          display: block;
+          width: 100%;
+          height: 180px;
+          object-fit: contain;
+        }
+      }
     }
   }
 
