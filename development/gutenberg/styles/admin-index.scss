@@ -63,7 +63,14 @@
       .rich-text {
         max-width: calc(50% - 4px);
         margin-bottom: 8px;
+        [role="textbox"].rich-text {
+          max-width: 100%;
+        }
       }
+    }
+    .components-base-control {
+      display: block;
+      width: 100%;
     }
     .rich-text {
       display: block;
@@ -183,6 +190,9 @@
         padding: 8px;
         background-color: rgba(0, 124, 186, 0.25);
         border-radius: 10px;
+        &.repeater-item-full {
+          max-width: 100%;
+        }
       }
       .repeater-image {
         display: block;
@@ -259,6 +269,13 @@
           opacity: 0.8;
         }
       }
+    }
+    .block-faq {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background-color: rgba(0, 124, 186, 0.25);
+      border-radius: 8px;
     }
   }
 

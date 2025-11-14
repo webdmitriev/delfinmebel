@@ -115,6 +115,34 @@ export function useAttributeList(attributes, setAttributes, key) {
   );
 
   // --------------------------
+  // ✍️ Рендер для текста (RichText)
+  // --------------------------
+  const renderTwoTextControl = (item, index, field = 'text', options = {}) => {
+    const textTitle = `${field}_title`;
+    const textContent = `${field}_content`;
+
+    return (
+      <>
+        <RichText
+          tagName={'div'}
+          style={{ marginBottom: '8px' }}
+          placeholder={__('Текст кнопки...', 'theme')}
+          value={item[textTitle]}
+          onChange={(value) => update(index, textTitle, value)}
+          className={'repeater-content'}
+        />
+        <TextareaControl
+          placeholder={__('Обычный текст...', 'theme')}
+          value={item[textContent]}
+          onChange={(value) => update(index, textContent, value)}
+          style={{ marginBottom: '8px' }}
+          rows={5}
+        />
+      </>
+    )
+  };
+
+  // --------------------------
   // 🔤 Рендер для пары (html + plain text)
   // --------------------------
   const renderDualTextControl = (item, index, baseField = 'textPair', options = {}) => {
@@ -143,5 +171,5 @@ export function useAttributeList(attributes, setAttributes, key) {
     );
   };
 
-  return { list, add, remove, update, moveUp, moveDown, setList, renderImageControl, renderTextControl, renderDualTextControl };
+  return { list, add, remove, update, moveUp, moveDown, setList, renderImageControl, renderTextControl, renderTwoTextControl, renderDualTextControl };
 }
