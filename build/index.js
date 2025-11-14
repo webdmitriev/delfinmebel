@@ -122,6 +122,17 @@ module.exports = __webpack_require__.p + "images/block-13.4448a3a1.jpg";
 
 /***/ }),
 
+/***/ "./admin/assets/img/blocks/block-14.jpg":
+/*!**********************************************!*\
+  !*** ./admin/assets/img/blocks/block-14.jpg ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "images/block-14.9b2dc13e.jpg";
+
+/***/ }),
+
 /***/ "./admin/assets/img/blocks/marquee-container.jpg":
 /*!*******************************************************!*\
   !*** ./admin/assets/img/blocks/marquee-container.jpg ***!
@@ -5507,7 +5518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _admin_assets_img_blocks_block_03_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/block-03.jpg */ "./admin/assets/img/blocks/block-03.jpg");
+/* harmony import */ var _admin_assets_img_blocks_block_14_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../admin/assets/img/blocks/block-14.jpg */ "./admin/assets/img/blocks/block-14.jpg");
 /* harmony import */ var _controls_VideoHelpPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./controls/VideoHelpPanel */ "./development/gutenberg/blocks/block-14/controls/VideoHelpPanel.js");
 /* harmony import */ var _controls_ContentPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./controls/ContentPanel */ "./development/gutenberg/blocks/block-14/controls/ContentPanel.js");
 
@@ -5583,7 +5594,7 @@ const Edit = ({
     }],
     onChange: value => setViewMode(value)
   })), viewMode === 'preview' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: _admin_assets_img_blocks_block_03_jpg__WEBPACK_IMPORTED_MODULE_5__,
+    src: _admin_assets_img_blocks_block_14_jpg__WEBPACK_IMPORTED_MODULE_5__,
     className: "preview-image",
     alt: "",
     style: {

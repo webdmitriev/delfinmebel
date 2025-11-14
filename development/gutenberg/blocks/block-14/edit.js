@@ -3,7 +3,7 @@ import { useBlockProps, RichText, InspectorControls, MediaUploadCheck, MediaUplo
 import { RadioControl, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import mainBlockImg from '../../../../admin/assets/img/blocks/block-03.jpg';
+import mainBlockImg from '../../../../admin/assets/img/blocks/block-14.jpg';
 
 import VideoHelpPanel from './controls/VideoHelpPanel';
 import ContentPanel from './controls/ContentPanel';

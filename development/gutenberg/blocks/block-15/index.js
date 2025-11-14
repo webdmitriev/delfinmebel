@@ -3,8 +3,8 @@ import edit from './edit';
 import save from './save';
 import attributes from './attributes';
 
-registerBlockType('theme/block-03', {
-  title: 'Блок: Заголовок',
+registerBlockType('theme/block-15', {
+  title: 'Контакты',
   category: 'landing',
   icon: 'admin-customizer',
   description: ' ',
@@ -19,4 +19,4 @@ registerBlockType('theme/block-03', {
   },
 });
 
-console.log('✅ block-03');
+console.log('✅ block-15');
