@@ -51,6 +51,8 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
     'theme/block-09',
     'theme/block-10',
     'theme/block-11',
+    'theme/marquee-container',
+    'theme/block-12',
 
     // стандартные блоки
     'core/paragraph',
