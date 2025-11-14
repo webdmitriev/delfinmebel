@@ -2,7 +2,6 @@
 
 defined('ABSPATH') || exit;
 
-// /wp-json/wp/v2/store_categories
 // === Регистрируем Custom Post Type "Товары" ===
 function register_store_post_type() {
 
@@ -121,7 +120,7 @@ add_action('created_store_categories', 'store_save_category_image', 10, 2);
 add_action('edited_store_categories', 'store_save_category_image', 10, 2);
 
 
-    // === Добавляем изображение в REST API ===
+// === Добавляем изображение в REST API ===
 function store_add_image_to_rest($response, $term, $request) {
     $image_id = get_term_meta($term->term_id, 'store_category_image', true);
     if ($image_id) {
@@ -162,90 +161,183 @@ function register_store_meta_fields() {
     'type' => 'string',
     'single' => true,
     'sanitize_callback' => 'sanitize_text_field',
-    'show_in_rest' => false, // <-- отключаем REST
+    'show_in_rest' => true,
   ]);
-
   register_post_meta('store', 'price_new', [
-    'type' => 'number',
+    'type' => 'string',
     'single' => true,
-    'sanitize_callback' => 'floatval',
-    'show_in_rest' => false,
+    'sanitize_callback' => 'sanitize_text_field',
+    'show_in_rest' => true,
   ]);
-
   register_post_meta('store', 'price_old', [
-    'type' => 'number',
+    'type' => 'string',
     'single' => true,
-    'sanitize_callback' => 'floatval',
-    'show_in_rest' => false,
+    'sanitize_callback' => 'sanitize_text_field',
+    'show_in_rest' => true,
   ]);
-
   register_post_meta('store', 'custom_excerpt', [
     'type' => 'string',
     'single' => true,
-    'sanitize_callback' => 'sanitize_textarea_field',
-    'show_in_rest' => false,
+    'sanitize_callback' => 'sanitize_text_field',
+    'show_in_rest' => true,
   ]);
-
   register_post_meta('store', 'is_popular', [
     'type' => 'boolean',
     'single' => true,
     'sanitize_callback' => 'rest_sanitize_boolean',
-    'show_in_rest' => false,
+    'show_in_rest' => true,
+  ]);
+  register_post_meta('store', 'gallery', [
+    'type'              => 'array',
+    'single'            => true,
+    'sanitize_callback' => 'store_sanitize_gallery',
+    'show_in_rest'      => [
+      'schema' => [
+        'type'  => 'array',
+        'items' => [
+          'type' => 'string',
+        ],
+      ],
+    ],
   ]);
 }
+add_action('init', 'register_store_meta_fields');
 
+function store_sanitize_gallery($value) {
+  if (!is_array($value)) return [];
+  return array_map('esc_url_raw', $value);
+}
 
 // === Добавляем метабокс для редактирования полей ===
-function add_store_meta_boxes() {
-    add_meta_box(
-        'store_fields',
-        'Дополнительные поля товара',
-        'render_store_meta_box',
-        'store',
-        'normal',
-        'high'
-    );
-}
-add_action('add_meta_boxes', 'add_store_meta_boxes');
+add_action('add_meta_boxes', function() {
+  remove_meta_box('store_fields', 'store', 'normal');
+}, 11);
+
 
 function render_store_meta_box($post) {
-    wp_nonce_field('store_meta_nonce', 'store_meta_nonce_field');
+  wp_nonce_field('store_meta_nonce', 'store_meta_nonce_field');
 
-    $articulate = get_post_meta($post->ID, 'articulate', true);
-    $price_new  = get_post_meta($post->ID, 'price_new', true);
-    $price_old  = get_post_meta($post->ID, 'price_old', true);
-    $excerpt    = get_post_meta($post->ID, 'custom_excerpt', true);
-    $is_popular = get_post_meta($post->ID, 'is_popular', true);
-    ?>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div>
-            <p>
-                <label for="articulate"><strong>Артикул:</strong></label><br>
-                <input type="text" name="articulate" id="articulate" value="<?php echo esc_attr($articulate); ?>" style="width:100%;">
-            </p>
-            <p>
-                <label for="price_new"><strong>Новая цена:</strong></label><br>
-                <input type="number" name="price_new" id="price_new" min="0" step="0.01" value="<?php echo esc_attr($price_new); ?>" style="width:100%;">
-            </p>
-            <p>
-                <label for="price_old"><strong>Старая цена:</strong></label><br>
-                <input type="number" name="price_old" id="price_old" min="0" step="0.01" value="<?php echo esc_attr($price_old); ?>" style="width:100%;">
-            </p>
-            <p>
-                <label>
-                    <input type="checkbox" name="is_popular" value="1" <?php checked($is_popular, 1); ?>>
-                    <strong>Популярный товар</strong>
-                </label>
-            </p>
-        </div>
-        <div>
-            <p>
-                <label for="custom_excerpt"><strong>Краткое описание:</strong></label><br>
-                <textarea name="custom_excerpt" id="custom_excerpt" rows="4" style="width:100%;"><?php echo esc_textarea($excerpt); ?></textarea>
-            </p>
-        </div>
+  $articulate       = get_post_meta($post->ID, 'articulate', true);
+  $price_new        = get_post_meta($post->ID, 'price_new', true);
+  $price_old        = get_post_meta($post->ID, 'price_old', true);
+  $custom_excerpt   = get_post_meta($post->ID, 'custom_excerpt', true);
+  $is_popular       = get_post_meta($post->ID, 'is_popular', true);
+  ?>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div>
+      <p>
+        <label>
+          <input type="checkbox" name="is_popular" value="1" <?php checked($is_popular, 1); ?>>
+          <strong>Популярный товар</strong>
+        </label>
+      </p>
+      <p>
+        <label for="articulate"><strong>Артикул:</strong></label><br>
+        <input type="text" name="articulate" id="articulate" value="<?php echo esc_attr($articulate); ?>" style="width:100%;" />
+      </p>
+      <p>
+        <label for="price_new"><strong>Новая цена:</strong></label><br>
+        <input type="text" name="price_new" id="price_new" value="<?php echo esc_attr($price_new); ?>" style="width:100%;" />
+      </p>
+      <p>
+        <label for="price_old"><strong>Старая цена:</strong></label><br>
+        <input type="text" name="price_old" id="price_old" value="<?php echo esc_attr($price_old); ?>" style="width:100%;" />
+      </p>
+      <p>
+        <label for="custom_excerpt"><strong>Краткое описание:</strong></label><br>
+        <input type="text" name="custom_excerpt" id="custom_excerpt" value="<?php echo esc_attr($custom_excerpt); ?>" style="width:100%;" />
+      </p>
     </div>
     <?php
+      $gallery = get_post_meta($post->ID, 'gallery', true);
+      if (!is_array($gallery)) $gallery = [];
+    ?>
+    <div style="margin-top: 20px;">
+      <label><strong>Галерея изображений:</strong></label>
+
+      <div id="store-gallery-container" style="display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;">
+        <?php foreach ($gallery as $image_url) : ?>
+          <div class="store-gallery-item" style="position:relative;display:inline-block;">
+            <img src="<?php echo esc_url($image_url); ?>" style="width:80px;height:80px;object-fit:cover;border:1px solid #ccc;border-radius:4px;">
+            <button type="button" class="store-remove-image" style="position:absolute;top:-6px;right:-6px;background:#f44336;color:#fff;border:none;border-radius:50%;width:18px;height:18px;line-height:14px;cursor:pointer;">×</button>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
+      <input type="hidden" name="gallery" id="store-gallery-field" value="<?php echo esc_attr(json_encode($gallery)); ?>" />
+
+      <button type="button" class="button" id="store-add-gallery">Добавить изображения</button>
+    </div>
+
+    <script>
+      jQuery(document).ready(function($){
+        let frame;
+        const container = $('#store-gallery-container');
+        const hiddenField = $('#store-gallery-field');
+
+        // === Добавление изображений ===
+        $('#store-add-gallery').on('click', function(e){
+          e.preventDefault();
+
+          if (frame) {
+            frame.open();
+            return;
+          }
+
+          frame = wp.media({
+            title: 'Выбрать изображения',
+            button: { text: 'Добавить в галерею' },
+            multiple: true
+          });
+
+          frame.on('select', function(){
+            const selection = frame.state().get('selection');
+            let current = [];
+
+            try {
+              current = JSON.parse(hiddenField.val()) || [];
+            } catch(e) {
+              current = [];
+            }
+
+            selection.map(function(attachment){
+              attachment = attachment.toJSON();
+              current.push(attachment.url);
+            });
+
+            updateGalleryUI(current);
+          });
+
+          frame.open();
+        });
+
+        // === Удаление изображения ===
+        container.on('click', '.store-remove-image', function(){
+          const index = $(this).parent().index();
+          let current = JSON.parse(hiddenField.val()) || [];
+          current.splice(index, 1);
+          updateGalleryUI(current);
+        });
+
+        // === Обновление UI и hidden поля ===
+        function updateGalleryUI(urls) {
+          hiddenField.val(JSON.stringify(urls));
+
+          container.empty();
+          urls.forEach(function(url){
+            container.append(`
+              <div class="store-gallery-item" style="position:relative;display:inline-block;">
+                <img src="${url}" style="width:80px;height:80px;object-fit:cover;border:1px solid #ccc;border-radius:4px;">
+                <button type="button" class="store-remove-image"
+                  style="position:absolute;top:-6px;right:-6px;background:#f44336;color:#fff;border:none;border-radius:50%;width:18px;height:18px;line-height:14px;cursor:pointer;">×</button>
+              </div>
+            `);
+          });
+        }
+      });
+    </script>
+  </div>
+  <?php
 }
 
 // === Сохраняем метаполя ===
@@ -268,21 +360,30 @@ function save_store_meta_fields($post_id) {
 
     // Новая цена
     if (isset($_POST['price_new'])) {
-        update_post_meta($post_id, 'price_new', floatval($_POST['price_new']));
+        update_post_meta($post_id, 'price_new', sanitize_text_field($_POST['price_new']));
     }
 
     // Старая цена
     if (isset($_POST['price_old'])) {
-        update_post_meta($post_id, 'price_old', floatval($_POST['price_old']));
+        update_post_meta($post_id, 'price_old', sanitize_text_field($_POST['price_old']));
     }
 
     // Краткое описание
     if (isset($_POST['custom_excerpt'])) {
-        update_post_meta($post_id, 'custom_excerpt', sanitize_textarea_field($_POST['custom_excerpt']));
+        update_post_meta($post_id, 'custom_excerpt', sanitize_text_field($_POST['custom_excerpt']));
     }
 
     $is_popular = isset($_POST['is_popular']) ? 1 : 0;
     update_post_meta($post_id, 'is_popular', $is_popular);
+
+  if (isset($_POST['gallery'])) {
+    $gallery = json_decode(stripslashes($_POST['gallery']), true);
+    if (is_array($gallery)) {
+      update_post_meta($post_id, 'gallery', array_map('esc_url_raw', $gallery));
+    } else {
+      delete_post_meta($post_id, 'gallery');
+    }
+  }
 }
 // Привязываем к save_post
 add_action('save_post', 'save_store_meta_fields');

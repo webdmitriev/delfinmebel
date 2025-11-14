@@ -2,18 +2,6 @@
 
 defined('ABSPATH') || exit;
 
-// для боковой панели
-// add_action( 'enqueue_block_editor_assets', function() {
-//   wp_enqueue_script(
-//     'works-sidebar',
-//     get_template_directory_uri() . '/admin/assets/css-js/works-sidebar.js',
-//     array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-api-fetch' ),
-//     filemtime( get_template_directory() . '/admin/assets/css-js/works-sidebar.js' ),
-//     true
-//   );
-// } );
-
-
 
 // === Регистрируем Custom Post Type "Наши работы" ===
 function register_works_post_type() {

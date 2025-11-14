@@ -2700,6 +2700,158 @@ function useAttributeList(attributes, setAttributes, key) {
 
 /***/ }),
 
+/***/ "./development/gutenberg/post-type/store-sidebar.js":
+/*!**********************************************************!*\
+  !*** ./development/gutenberg/post-type/store-sidebar.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  registerPlugin
+} = wp.plugins;
+const {
+  PluginSidebar,
+  PluginSidebarMoreMenuItem
+} = wp.editPost;
+const {
+  PanelBody,
+  TextControl,
+  ToggleControl,
+  Button,
+  Dashicon
+} = wp.components;
+const {
+  useSelect,
+  useDispatch
+} = wp.data;
+const {
+  Fragment
+} = wp.element;
+const StoreSidebar = () => {
+  const postType = useSelect(select => select('core/editor').getCurrentPostType(), []);
+
+  // Ограничиваем только для 'store'
+  if (postType !== 'store') return null;
+  const postMeta = useSelect(select => select('core/editor').getEditedPostAttribute('meta') || {}, []);
+  const {
+    editPost
+  } = useDispatch('core/editor');
+  const updateMeta = (key, value) => {
+    editPost({
+      meta: {
+        ...postMeta,
+        [key]: value
+      }
+    });
+  };
+  const gallery = Array.isArray(postMeta.gallery) ? postMeta.gallery : [];
+  const addImagesToGallery = () => {
+    const frame = wp.media({
+      title: 'Выберите изображения',
+      button: {
+        text: 'Добавить'
+      },
+      multiple: true
+    });
+    frame.on('select', () => {
+      const selection = frame.state().get('selection').toArray();
+      const urls = selection.map(att => att.toJSON().url);
+      updateMeta('gallery', [...gallery, ...urls]);
+    });
+    frame.open();
+  };
+  const removeImageFromGallery = index => {
+    const newGallery = [...gallery];
+    newGallery.splice(index, 1);
+    updateMeta('gallery', newGallery);
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginSidebarMoreMenuItem, {
+    target: "store-sidebar",
+    icon: "admin-post"
+  }, "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0440\u0430\u0431\u043E\u0442\u044B"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginSidebar, {
+    name: "store-sidebar",
+    title: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0440\u0430\u0431\u043E\u0442\u044B",
+    icon: "admin-post"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: "\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u043F\u043E\u043B\u044F",
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+    value: postMeta.articulate || '',
+    onChange: val => updateMeta('articulate', val)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: "\u041D\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430",
+    value: postMeta.price_new || '',
+    onChange: val => updateMeta('price_new', val)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: "\u0421\u0442\u0430\u0440\u0430\u044F \u0446\u0435\u043D\u0430",
+    value: postMeta.price_old || '',
+    onChange: val => updateMeta('price_old', val)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+    value: postMeta.custom_excerpt || '',
+    onChange: val => updateMeta('custom_excerpt', val)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u0430\u044F \u0440\u0430\u0431\u043E\u0442\u0430",
+    checked: !!postMeta.is_popular,
+    onChange: val => updateMeta('is_popular', val)
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: "\u0413\u0430\u043B\u0435\u0440\u0435\u044F",
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px'
+    }
+  }, gallery.map((url, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: i,
+    style: {
+      position: 'relative'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: url,
+    style: {
+      width: '80px',
+      height: '80px',
+      objectFit: 'cover',
+      borderRadius: '4px',
+      border: '1px solid #ccc'
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    icon: "no-alt",
+    onClick: () => removeImageFromGallery(i),
+    style: {
+      position: 'absolute',
+      top: '-6px',
+      right: '-6px',
+      width: '18px',
+      height: '18px',
+      minWidth: '18px',
+      padding: '0',
+      borderRadius: '50%',
+      background: '#f44336',
+      color: '#fff'
+    }
+  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isPrimary: true,
+    onClick: addImagesToGallery,
+    style: {
+      marginTop: '10px'
+    }
+  }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F"))));
+};
+registerPlugin('store-sidebar', {
+  render: StoreSidebar
+});
+
+/***/ }),
+
 /***/ "./development/gutenberg/post-type/works-sidebar.js":
 /*!**********************************************************!*\
   !*** ./development/gutenberg/post-type/works-sidebar.js ***!
@@ -3370,17 +3522,19 @@ var __webpack_exports__ = {};
   \****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _post_type_works_sidebar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./post-type/works-sidebar.js */ "./development/gutenberg/post-type/works-sidebar.js");
-/* harmony import */ var _seo_panel_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seo-panel.js */ "./development/gutenberg/seo-panel.js");
-/* harmony import */ var _extends_spacer_bg_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./extends/spacer-bg.js */ "./development/gutenberg/extends/spacer-bg.js");
-/* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./formats/li-format.js */ "./development/gutenberg/formats/li-format.js");
-/* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_formats_li_format_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _blocks_block_01_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/block-01/index.js */ "./development/gutenberg/blocks/block-01/index.js");
-/* harmony import */ var _blocks_block_03_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/block-03/index.js */ "./development/gutenberg/blocks/block-03/index.js");
-/* harmony import */ var _blocks_block_04_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/block-04/index.js */ "./development/gutenberg/blocks/block-04/index.js");
-/* harmony import */ var _blocks_block_05_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./blocks/block-05/index.js */ "./development/gutenberg/blocks/block-05/index.js");
-/* harmony import */ var _blocks_block_07_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./blocks/block-07/index.js */ "./development/gutenberg/blocks/block-07/index.js");
-/* harmony import */ var _blocks_block_08_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./blocks/block-08/index.js */ "./development/gutenberg/blocks/block-08/index.js");
+/* harmony import */ var _post_type_store_sidebar_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post-type/store-sidebar.js */ "./development/gutenberg/post-type/store-sidebar.js");
+/* harmony import */ var _seo_panel_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./seo-panel.js */ "./development/gutenberg/seo-panel.js");
+/* harmony import */ var _extends_spacer_bg_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./extends/spacer-bg.js */ "./development/gutenberg/extends/spacer-bg.js");
+/* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./formats/li-format.js */ "./development/gutenberg/formats/li-format.js");
+/* harmony import */ var _formats_li_format_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_formats_li_format_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _blocks_block_01_index_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/block-01/index.js */ "./development/gutenberg/blocks/block-01/index.js");
+/* harmony import */ var _blocks_block_03_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/block-03/index.js */ "./development/gutenberg/blocks/block-03/index.js");
+/* harmony import */ var _blocks_block_04_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./blocks/block-04/index.js */ "./development/gutenberg/blocks/block-04/index.js");
+/* harmony import */ var _blocks_block_05_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./blocks/block-05/index.js */ "./development/gutenberg/blocks/block-05/index.js");
+/* harmony import */ var _blocks_block_07_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./blocks/block-07/index.js */ "./development/gutenberg/blocks/block-07/index.js");
+/* harmony import */ var _blocks_block_08_index_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./blocks/block-08/index.js */ "./development/gutenberg/blocks/block-08/index.js");
 // sidebar post type
+
 
 
 // add CEO

@@ -1,5 +1,6 @@
 // sidebar post type
 import './post-type/works-sidebar.js';
+import './post-type/store-sidebar.js';
 
 // add CEO
 import './seo-panel.js';
