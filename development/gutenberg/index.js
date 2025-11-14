@@ -25,3 +25,4 @@ import './blocks/marquee-container/index.js';
 import './blocks/block-12/index.js';
 import './blocks/block-13/index.js';
 import './blocks/block-14/index.js';
+import './blocks/block-15/index.js';
