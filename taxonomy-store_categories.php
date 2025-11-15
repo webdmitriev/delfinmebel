@@ -19,18 +19,22 @@ get_header('page');
       <div class="block-products">
 				<?php
 					// Аргументы для запроса товаров текущей категории
-					$paged = max(1, get_query_var('paged'));
-
+					$current_category = get_queried_object();
 					$args = array(
-						'post_type' => 'store',
-						'posts_per_page' => 12,
-						'paged' => $paged,
+						'post_type'      => 'store',
+						'posts_per_page' => -1,
+						'tax_query'      => array(
+							array(
+								'taxonomy' => 'store_categories',
+								'field'    => 'slug',
+								'terms'    => $current_category->slug,
+							),
+						),
 					);
 
 					$store_query = new WP_Query($args);
 
-
-					if ( have_posts() ) : while ( have_posts() ) : the_post();
+					if ($store_query->have_posts()): while ($store_query->have_posts()): $store_query->the_post();
 						$label = get_post_meta(get_the_ID(), 'label', true);
 						$articulate = get_post_meta(get_the_ID(), 'articulate', true);
 						$price_new = get_post_meta(get_the_ID(), 'price_new', true);
@@ -68,8 +72,6 @@ get_header('page');
 				<?php endwhile; wp_reset_postdata(); else : ?>
 					<p>В этой категории пока нет товаров.</p>
 				<?php endif; ?>
-
-				<?php the_posts_pagination(); ?>
       </div>
     </div>
   </div>
