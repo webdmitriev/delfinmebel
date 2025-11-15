@@ -3,7 +3,7 @@
   display: block;
   width: 100%;
   max-width: 360px;
-  padding: 18px;
+  padding: 18px 18px 64px 18px;
   background-color: #f8f7ff;
   border-radius: 16px;
   transition: all 0.3s ease;
@@ -87,7 +87,6 @@
   }
   .product-price {
     gap: 16px;
-    margin-bottom: 16px;
     .price-new:after,
     .price-old:after {
       content: " ₽";
@@ -115,8 +114,12 @@
     }
   }
   .product-link {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
     display: block;
     width: 100%;
+    max-width: calc(100% - 32px);
     padding: 6px 12px;
     font-family: var(--font-family);
     font-weight: 400;
@@ -237,7 +240,7 @@
 }
 @media (max-width: 576px) {
   .product {
-    padding: 14px;
+    padding: 14px 14px 64px 14px;
   }
   .product .product-title {
     font-size: 16px;
@@ -245,6 +248,11 @@
   .product .product-descr {
     font-size: 15px;
     -webkit-line-clamp: 5;
+  }
+  .product .product-link {
+    bottom: 14px;
+    left: 14px;
+    max-width: calc(100% - 28px);
   }
 }
 @media (max-width: 460px) {
