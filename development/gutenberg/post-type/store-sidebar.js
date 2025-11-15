@@ -1,6 +1,6 @@
 const { registerPlugin } = wp.plugins;
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
-const { PanelBody, TextControl, ToggleControl, Button, Dashicon } = wp.components;
+const { PanelBody, TextControl, TextareaControl, ToggleControl, Button, Dashicon } = wp.components;
 const { useSelect, useDispatch } = wp.data;
 const { Fragment } = wp.element;
 
@@ -60,6 +60,11 @@ const StoreSidebar = () => {
       >
         <PanelBody title="Основные поля" initialOpen={true}>
           <TextControl
+            label="Лейбл"
+            value={postMeta.label || ''}
+            onChange={(val) => updateMeta('label', val)}
+          />
+          <TextControl
             label="Артикул"
             value={postMeta.articulate || ''}
             onChange={(val) => updateMeta('articulate', val)}
@@ -74,13 +79,14 @@ const StoreSidebar = () => {
             value={postMeta.price_old || ''}
             onChange={(val) => updateMeta('price_old', val)}
           />
-          <TextControl
-            label="Описание"
+          <TextareaControl
+            placeholder="Описание"
             value={postMeta.custom_excerpt || ''}
             onChange={(val) => updateMeta('custom_excerpt', val)}
+            rows={5}
           />
           <ToggleControl
-            label="Популярная работа"
+            label="Популярная работа?"
             checked={!!postMeta.is_popular}
             onChange={(val) => updateMeta('is_popular', val)}
           />

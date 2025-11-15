@@ -157,6 +157,12 @@ add_action('admin_enqueue_scripts', 'store_category_admin_scripts');
 
 // === Регистрируем метаполя для store ===
 function register_store_meta_fields() {
+  register_post_meta('store', 'label', [
+    'type' => 'string',
+    'single' => true,
+    'sanitize_callback' => 'sanitize_text_field',
+    'show_in_rest' => true,
+  ]);
   register_post_meta('store', 'articulate', [
     'type' => 'string',
     'single' => true,
@@ -217,6 +223,7 @@ add_action('add_meta_boxes', function() {
 function render_store_meta_box($post) {
   wp_nonce_field('store_meta_nonce', 'store_meta_nonce_field');
 
+  $label            = get_post_meta($post->ID, 'label', true);
   $articulate       = get_post_meta($post->ID, 'articulate', true);
   $price_new        = get_post_meta($post->ID, 'price_new', true);
   $price_old        = get_post_meta($post->ID, 'price_old', true);
@@ -230,6 +237,10 @@ function render_store_meta_box($post) {
           <input type="checkbox" name="is_popular" value="1" <?php checked($is_popular, 1); ?>>
           <strong>Популярный товар</strong>
         </label>
+      </p>
+      <p>
+        <label for="label"><strong>Лейбл:</strong></label><br>
+        <input type="text" name="label" id="label" value="<?php echo esc_attr($label); ?>" style="width:100%;" />
       </p>
       <p>
         <label for="articulate"><strong>Артикул:</strong></label><br>
@@ -353,6 +364,11 @@ function save_store_meta_fields($post_id) {
     // Проверяем права пользователя
     if (!current_user_can('edit_post', $post_id)) return;
 
+    // Лейбл
+    if (isset($_POST['label'])) {
+        update_post_meta($post_id, 'label', sanitize_text_field($_POST['label']));
+    }
+
     // Артикул
     if (isset($_POST['articulate'])) {
         update_post_meta($post_id, 'articulate', sanitize_text_field($_POST['articulate']));
@@ -437,26 +453,26 @@ add_action('pre_get_posts', 'store_popular_orderby');
 
 // Обработка вывода блока на фронтенде
 function render_popular_products_block($attributes, $content) {
-    $title = $attributes['title'] ?? '';
-    
-    // Получаем популярные товары
-    $args = array(
-        'post_type' => 'store',
-        'posts_per_page' => 20,
-        'meta_query' => array(
-            array(
-                'key' => 'is_popular',
-                'value' => '1',
-                'compare' => '='
-            )
-        )
-    );
-    
-    $popular_products = new WP_Query($args);
-    
-    ob_start();
-    ?>
-    
+  $title = $attributes['title'] ?? '';
+
+  // Получаем популярные товары
+  $args = array(
+    'post_type' => 'store',
+    'posts_per_page' => 20,
+    'meta_query' => array(
+      array(
+        'key' => 'is_popular',
+        'value' => '1',
+        'compare' => '='
+      )
+    )
+  );
+
+  $popular_products = new WP_Query($args);
+
+  ob_start();
+  ?>
+
     <div class="block-05">
         <div class="container">
             <?php if ($title) : ?><h2 class="h2"><?php echo esc_html($title); ?></h2><?php endif; ?>
@@ -495,15 +511,15 @@ function render_popular_products_block($attributes, $content) {
             <?php endif; ?>
         </div>
     </div>
-    
+
     <?php
     return ob_get_clean();
 }
 
 // Регистрируем рендер блока
 function register_popular_products_block() {
-    register_block_type('theme/block-05', array(
-        'render_callback' => 'render_popular_products_block'
-    ));
+  register_block_type('theme/block-05', array(
+    'render_callback' => 'render_popular_products_block'
+  ));
 }
 add_action('init', 'register_popular_products_block');

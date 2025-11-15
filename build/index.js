@@ -6912,6 +6912,7 @@ const {
 const {
   PanelBody,
   TextControl,
+  TextareaControl,
   ToggleControl,
   Button,
   Dashicon
@@ -6972,6 +6973,10 @@ const StoreSidebar = () => {
     title: "\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u043F\u043E\u043B\u044F",
     initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: "\u041B\u0435\u0439\u0431\u043B",
+    value: postMeta.label || '',
+    onChange: val => updateMeta('label', val)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
     label: "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
     value: postMeta.articulate || '',
     onChange: val => updateMeta('articulate', val)
@@ -6983,12 +6988,13 @@ const StoreSidebar = () => {
     label: "\u0421\u0442\u0430\u0440\u0430\u044F \u0446\u0435\u043D\u0430",
     value: postMeta.price_old || '',
     onChange: val => updateMeta('price_old', val)
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-    label: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
+    placeholder: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
     value: postMeta.custom_excerpt || '',
-    onChange: val => updateMeta('custom_excerpt', val)
+    onChange: val => updateMeta('custom_excerpt', val),
+    rows: 5
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    label: "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u0430\u044F \u0440\u0430\u0431\u043E\u0442\u0430",
+    label: "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u0430\u044F \u0440\u0430\u0431\u043E\u0442\u0430?",
     checked: !!postMeta.is_popular,
     onChange: val => updateMeta('is_popular', val)
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
