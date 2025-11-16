@@ -5,24 +5,9 @@ if (!defined('ABSPATH')) exit;
 // Пути к видео файлам
 $videos = array(
   'main' => array(
-    'title' => 'Main Setup',
-    'path' => get_template_directory_uri() . '/admin/instructions/main.mov',
-    'description' => 'Main block'
-  ),
-  'form' => array(
-    'title' => 'Form Configuration',
-    'path' => get_template_directory_uri() . '/admin/instructions/form.mov',
-    'description' => 'Form block'
-  ),
-  'global' => array(
-    'title' => 'Global Settings',
-    'path' => get_template_directory_uri() . '/admin/instructions/global.mov',
-    'description' => 'Global theme settings and options'
-  ),
-  'menu' => array(
-    'title' => 'Menu Management',
-    'path' => get_template_directory_uri() . '/admin/instructions/menu.mov',
-    'description' => 'How to manage menus and navigation'
+    'title' => 'Главное видео',
+    'path' => get_template_directory_uri() . '/admin/instructions/delfin.mov',
+    'description' => ' '
   )
 );
 ?>
