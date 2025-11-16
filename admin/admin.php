@@ -10,6 +10,7 @@ add_filter('show_admin_bar', '__return_false');
 /**
  * Post types
  */
+require get_template_directory() . '/admin/helpers/post-post.php';
 require get_template_directory() . '/admin/helpers/post-types.php';
 require get_template_directory() . '/admin/helpers/post-types-works.php';
 require get_template_directory() . '/admin/helpers/post-types-ldsp.php';

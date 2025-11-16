@@ -14,90 +14,47 @@ $image_base64 = 'data:image/gif;base64,R0lGODlhBwAFAIAAAP///wAAACH5BAEAAAEALAAAA
     <div class="container df-fs-fs">
       <h1 class="h1">Наши статьи:</h1>
       <div class="blog-items">
-        <a href="#" class="blog-item">
-          <div class="blog-item__badge">Пластик или фанера</div>
-          <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
-          <div class="blog-item__content">
-            <div class="blog-item__title">Из какого материала заказывать сиденья и спинки для школьных стульев?</div>
-            <div class="blog-item__descr">Выбор материалов для изготовления школьных стульев — это задача, с которой сталкивается каждый директор школы. Одним из ключевых решений является выбор между фанерой и пластиком для сидений и спинок.</div>
-            <div class="blog-item__link">Читать статью →</div>
-          </div>
-        </a>
-        <a href="#" class="blog-item">
-          <div class="blog-item__badge">Избегаем проблем с Роспотребнадзором</div>
-          <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
-          <div class="blog-item__content">
-            <div class="blog-item__title">Из какого материала заказывать сиденья и спинки для школьных стульев?</div>
-            <div class="blog-item__descr">Выбор материалов для изготовления школьных стульев — это задача, с которой сталкивается каждый директор школы. Одним из ключевых решений является выбор между фанерой и пластиком для сидений и спинок.</div>
-            <div class="blog-item__link">Читать статью →</div>
-          </div>
-        </a>
-        <a href="#" class="blog-item">
-          <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
-          <div class="blog-item__content">
-            <div class="blog-item__title">Из какого материала заказывать сиденья?</div>
-            <div class="blog-item__descr">Выбор материалов для изготовления школьных стульев — это задача, с которой сталкивается каждый директор школы. Одним из ключевых решений является выбор между фанерой и пластиком для сидений и спинок.</div>
-            <div class="blog-item__link">Читать статью →</div>
-          </div>
-        </a>
-        <a href="#" class="blog-item">
-          <div class="blog-item__badge">Разбираемся в ценах</div>
-          <img src="<?= $url; ?>/assets/img/block-08/image-01.png" alt="alto" class="blog-item__image" />
-          <div class="blog-item__content">
-            <div class="blog-item__title">Из какого материала заказывать сиденья и спинки для школьных стульев?</div>
-            <div class="blog-item__descr">Выбор материалов для изготовления школьных стульев — это задача, с которой сталкивается каждый директор школы. Одним из ключевых решений является выбор между фанерой и пластиком для сидений и спинок.</div>
-            <div class="blog-item__link">Читать статью →</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+        <?php
 
-  <div class="block-14">
-    <div class="container">
-      <img src="<?= $url; ?>/assets/img/block-14/bg-image-01.webp" alt="alto" class="block-bg-01" />
-      <img src="<?= $url; ?>/assets/img/block-14/bg-image-02.svg" alt="alto" class="block-bg-02" />
-      <div class="block-wrap">
-        <h2 class="h2">Подписывайтесь на наше сообщество ВКонтакте и узнавайте все новости первыми</h2>
-        <div class="descr">Здесь мы выкладываем наши работы в образовательных учреждениях Калининграда и области</div>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="link-vk">/school_mebel39</a>
-      </div>
-    </div>
-  </div>
+        $args = array(
+          'post_type'      => 'post',
+          'posts_per_page' => -1,
+        );
 
-  <div class="block-15">
-    <div class="container df-sp-st">
-      <h2 class="h2">Контакты</h2>
-      <div class="block-item df-sp-ce w-100p">
-        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-01.svg" alt="alto" /></div>
-        <div class="block-item__content">
-          <div class="block-item__label">label</div>
-          <div class="block-item__descr">descr</div>
-        </div>
-      </div>
-      <div class="block-item df-sp-ce w-100p">
-        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-02.svg" alt="alto" /></div>
-        <div class="block-item__content">
-          <div class="block-item__label">label</div>
-          <div class="block-item__descr">descr</div>
-        </div>
-      </div>
-      <div class="block-item df-sp-ce w-100p">
-        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-03.svg" alt="alto" /></div>
-        <div class="block-item__content">
-          <div class="block-item__label">label</div>
-          <div class="block-item__descr">descr</div>
-        </div>
-      </div>
-      <div class="block-item df-sp-ce w-100p">
-        <div class="block-item__icon df-ce-ce"><img src="<?= $url; ?>/assets/img/block-15/icon-04.svg" alt="alto" /></div>
-        <div class="block-item__content">
-          <div class="block-item__label">label</div>
-          <div class="block-item__descr">descr</div>
-        </div>
+        $works_query = new WP_Query($args);
+        if ($works_query->have_posts()): while ($works_query->have_posts()): $works_query->the_post();
+          $label = get_post_meta(get_the_ID(), 'label', true);
+          $excerpt = get_the_excerpt();
+        ?>
+          <a href="<?php the_permalink(); ?>" class="blog-item">
+            <?php if (!empty($label)): ?><div class="blog-item__badge"><?php echo esc_html($label); ?></div><?php endif; ?>
+            <?php
+            if (has_post_thumbnail()) {
+              echo get_the_post_thumbnail(get_the_ID(), 'medium', array(
+                'class' => 'blog-item__image',
+                'loading' => 'lazy',
+                'alt' => get_the_title()
+              ));
+            } else {
+              echo '<img src="'.$image_base64.'"
+                class="blog-item__image"
+                loading="lazy"
+                alt="' . get_the_title() . '">';
+            }
+            ?>
+            <div class="blog-item__content">
+              <div class="blog-item__title"><?php the_title(); ?></div>
+              <div class="blog-item__descr"><?php if (!empty($excerpt)) { $limited_excerpt = wp_trim_words($excerpt, 15, '...');echo esc_html($limited_excerpt); } ?></div>
+              <div class="blog-item__link">Читать статью →</div>
+            </div>
+          </a>
+        <?php endwhile; wp_reset_postdata(); else : ?>
+          <p>Наши работы не наполнены.</p>
+        <?php endif; ?>
       </div>
     </div>
   </div>
 
 <?php
+the_content();
 get_footer();
