@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return false;
   });
 
+  // product-popup-show
+  $('body').on('click', '.product-popup-show', function () {
+    $('.popup-call').show()
+  })
+
   // **********
   // AutoSlider
   new AutoSlider('.slider-products', {
