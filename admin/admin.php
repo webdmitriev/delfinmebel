@@ -12,6 +12,7 @@ add_filter('show_admin_bar', '__return_false');
  */
 require get_template_directory() . '/admin/helpers/post-types.php';
 require get_template_directory() . '/admin/helpers/post-types-works.php';
+require get_template_directory() . '/admin/helpers/post-types-ldsp.php';
 
 /**
  * Add for head something

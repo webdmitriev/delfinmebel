@@ -1,6 +1,7 @@
 // sidebar post type
 import './post-type/works-sidebar.js';
 import './post-type/store-sidebar.js';
+import './post-type/ldsp-sidebar.js';
 
 // add CEO
 import './seo-panel.js';
@@ -26,3 +27,4 @@ import './blocks/block-12/index.js';
 import './blocks/block-13/index.js';
 import './blocks/block-14/index.js';
 import './blocks/block-15/index.js';
+import './blocks/block-18/index.js';

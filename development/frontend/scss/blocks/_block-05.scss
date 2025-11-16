@@ -32,7 +32,9 @@
       }
       .slider-product__title,
       .slider-product__descr {
-        display: block;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         width: 100%;
         max-width: calc(100% - 20px);
         margin-inline: auto;
@@ -42,6 +44,7 @@
         margin-bottom: 12px;
         font-weight: 500;
         font-size: 24px;
+        -webkit-line-clamp: 3;
         line-height: var(--font-height);
         color: var(--black-color);
       }
@@ -49,6 +52,7 @@
         font-weight: 400;
         font-size: 18px;
         line-height: var(--font-height);
+        -webkit-line-clamp: 4;
         color: var(--black-color);
       }
       .slider-product__price {

@@ -35,7 +35,11 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
   // Для типа записи 'store' разрешаем только один блок
   if ( $current_post_type === 'store' ) {
     return [
-      'theme/block-01'
+      'theme/block-01',
+      'theme/block-05',
+      'theme/block-18',
+      'theme/block-14',
+      'theme/block-15',
     ];
   }
 
@@ -56,6 +60,7 @@ function theme_allowed_blocks( $allowed_blocks, $editor_context ) {
     'theme/block-13',
     'theme/block-14',
     'theme/block-15',
+    'theme/block-18',
 
     // стандартные блоки
     'core/paragraph',

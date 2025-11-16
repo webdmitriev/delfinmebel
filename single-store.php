@@ -47,4 +47,5 @@ get_header('page');
   </div>
 
 <?php
+the_content();
 get_footer();
