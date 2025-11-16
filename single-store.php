@@ -16,7 +16,7 @@ $gallery = get_post_meta(get_the_ID(), 'gallery', true);
 get_header('page');
 ?>
 
-  <div class="block-17" data-product-id="product-<?= get_the_ID() || 0; ?>">
+  <div class="block-17" data-product-id="product-<?= get_the_ID(); ?>">
     <div class="container df-sp-fs">
       <div class="block-thumbnail">
         <?php if (has_post_thumbnail()):
