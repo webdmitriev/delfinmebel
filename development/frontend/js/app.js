@@ -12,6 +12,19 @@ document.addEventListener('DOMContentLoaded', function () {
     $(".header-mobile").removeClass("active")
   })
 
+  // *********
+  // Scroll on
+  $("body").on('click', ".ancLinks a", function () {
+    let elementClick = $(this).attr("href");
+    let destination = Math.round($(elementClick).offset().top);
+
+    $(".header-mobile").removeClass("active")
+    $(".header .burger-menu").removeClass("active")
+
+    $("html,body").animate({ scrollTop: destination - 5 }, 1100);
+    return false;
+  });
+
   // **********
   // AutoSlider
   new AutoSlider('.slider-products', {

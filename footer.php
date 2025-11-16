@@ -13,7 +13,7 @@
 
 ?>
 
-		<footer class="footer" style="display: block;">
+		<footer class="footer" id="footer" style="display: block;">
 			<div class="container">
 				<div class="footer-top df-sp-ce w-100p">
 					<a href="<?php echo get_home_url( null, '/' ); ?>" class="logotype"><img src="<?= $url; ?>/assets/img/header/logotype.png" alt="alto" /></a>
